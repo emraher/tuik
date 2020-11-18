@@ -241,7 +241,7 @@ all_dbs %>%
 #> bbox:           xmin: 25.66 ymin: 35.86 xmax: 44.81 ymax: 42.1
 #> geographic CRS: WGS 84
 #> # A tibble: 81 x 8
-#>        i LEVEL1_COD LEVEL2_COD LEVEL3_COD LEV1_NAME LEV2_NAME NAME 
+#>     code LEVEL1_COD LEVEL2_COD LEVEL3_COD LEV1_NAME LEV2_NAME NAME 
 #>    <int> <chr>      <chr>      <chr>      <chr>     <chr>     <chr>
 #>  1     1 TR6        TR62       TR621      Akdeniz   Adana     ADANA
 #>  2     2 TRC        TRC1       TRC12      Guneydog… Gaziantep ADIY…
@@ -258,46 +258,84 @@ all_dbs %>%
 
 ## Map Examples
 
-### NUTS-3
+### NUTS-2
 
 ``` r
-pop <- geo_data(3, "ADNKS-GK137473-O29001")
-pop <- pop %>% 
-  filter(date == 2019) %>% 
-  mutate(code = as.numeric(code))
+chicken <- geo_data(2, "HYV-GK1696800-O32507") %>% 
+  dplyr::filter(date %in% c("2015", "2019"))
 
-dt_sf <- geo_map(3)
-
-dt_sf <- left_join(dt_sf, pop, by = c("i" = "code"))
-
-ggplot(data = dt_sf) +
-  geom_sf(aes(fill = toplam_nufus_kisi)) +
-  scale_fill_viridis_c(option = "plasma") +
-  labs(fill = "Population in 2019")
+geo_map(2) %>% 
+  left_join(chicken) %>% 
+  ggplot() +
+  geom_sf(aes(fill = yumurta_tavugu_sayisi_adet), color = "white") +
+  coord_sf(datum = NA) + 
+  rcartocolor::scale_fill_carto_c(palette = "Safe") +
+  hrbrthemes::theme_ipsum_rc() +
+  theme(legend.position = "bottom", legend.key.width = unit(3, "cm")) +
+  labs(fill = "",
+       title = "Yumurta Tavuğu (Adet)",
+       caption = "Kaynak: TÜİK") +
+  facet_wrap(~date, ncol = 2)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
-### LAU-1
+### NUTS-3
 
 ``` r
-geo_data(4, "ADNKS-GK137473-O29001") %>% 
+house <- geo_data(3, "INS-GK055-O006") %>% 
   filter(date == 2019) %>% 
-  mutate(code = as.numeric(code)) %>% 
-  left_join(geo_map(level = 4), ., by = c("i" = "code")) %>% 
+  mutate(code = as.numeric(code))
+
+# Let's select different colors
+pal <- wesanderson::wes_palette("BottleRocket2", 50, type = "continuous")
+
+geo_map(3) %>% 
+  left_join(house) %>% 
   ggplot() +
-  geom_sf(aes(fill = toplam_nufus_kisi)) +
-  scale_fill_viridis_c(option = "plasma") +
-  labs(fill = "Population in 2019")
+  geom_sf(aes(fill = konut_satis_sayilari_toplam)) +
+  coord_sf(datum = NA) + 
+  scale_fill_gradientn(colours = pal) + 
+  hrbrthemes::theme_ipsum_rc() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       title = "2019 Yılında Konut Satış Sayıları",
+       caption = "Kaynak: TÜİK")
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
+### LAU-1
+
+``` r
+pal <- c("#f7f7f7", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252", "#252525")
+
+geo_data(4, "ULE-GK160887-O29502") %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code)) %>% 
+  left_join(geo_map(level = 4), .) %>% 
+  ggplot() +
+  geom_sf(aes(fill = okuma_yazma_bilmeyen_sayisi), lwd = 0.1) +
+  coord_sf(datum = NA) + 
+  scale_fill_gradientn(colours = pal) +
+  theme_bw() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
+       caption = "Kaynak: TÜİK")
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
 ``` r
 geo_data(4, "ADNKS-GK137473-O29001") %>% 
   filter(date == 2019) %>% 
   mutate(code = as.numeric(code)) %>% 
-  left_join(geo_map(level = 4), ., by = c("i" = "code")) %>% 
+  left_join(geo_map(level = 4), .) %>% 
   filter(iladi == "ANKARA") %>% 
   ggplot() +
   geom_sf(aes(fill = toplam_nufus_kisi)) +
@@ -306,4 +344,4 @@ geo_data(4, "ADNKS-GK137473-O29001") %>%
   hrbrthemes::theme_ipsum_rc()
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

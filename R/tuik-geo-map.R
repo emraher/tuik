@@ -40,6 +40,9 @@ geo_map <- function(level = c(2, 3, 4, 9), dataframe = FALSE) {
     ) %>%
     sf::read_sf()
 
+  if (level != 9) dt_sf <- dt_sf %>% dplyr::rename("code" = "i")
+
+
   if (dataframe == FALSE) {
     return(dt_sf)
   } else {
