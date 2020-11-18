@@ -28,6 +28,7 @@ devtools::install_github("emraher/tuik")
 ## Example
 
 ``` r
+library(tidyverse)
 library(tuik)
 
 (st <- statistical_themes())
@@ -254,3 +255,55 @@ all_dbs %>%
 #> 10    35 TR3        TR31       TR310      Ege       Izmir     IZMIR
 #> # … with 71 more rows, and 1 more variable: geometry <MULTIPOLYGON [°]>
 ```
+
+## Map Examples
+
+### NUTS-3
+
+``` r
+pop <- geo_data(3, "ADNKS-GK137473-O29001")
+pop <- pop %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code))
+
+dt_sf <- geo_map(3)
+
+dt_sf <- left_join(dt_sf, pop, by = c("i" = "code"))
+
+ggplot(data = dt_sf) +
+  geom_sf(aes(fill = toplam_nufus_kisi)) +
+  scale_fill_viridis_c(option = "plasma") +
+  labs(fill = "Population in 2019")
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+### LAU-1
+
+``` r
+geo_data(4, "ADNKS-GK137473-O29001") %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code)) %>% 
+  left_join(geo_map(level = 4), ., by = c("i" = "code")) %>% 
+  ggplot() +
+  geom_sf(aes(fill = toplam_nufus_kisi)) +
+  scale_fill_viridis_c(option = "plasma") +
+  labs(fill = "Population in 2019")
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+``` r
+geo_data(4, "ADNKS-GK137473-O29001") %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code)) %>% 
+  left_join(geo_map(level = 4), ., by = c("i" = "code")) %>% 
+  filter(iladi == "ANKARA") %>% 
+  ggplot() +
+  geom_sf(aes(fill = toplam_nufus_kisi)) +
+  scale_fill_viridis_c(option = "E") +
+  labs(fill = "Population in 2019") +
+  hrbrthemes::theme_ipsum_rc()
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />

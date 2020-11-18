@@ -22,9 +22,9 @@ geo_map <- function(level = c(2, 3, 4, 9), dataframe = FALSE) {
   }
 
   query_url <- dplyr::case_when(
-    level == 2 ~ "https://cip.tuik.gov.tr/assets/nuts3.min.js",
+    level == 2 ~ "https://cip.tuik.gov.tr/assets/nuts2.min.js",
     level == 3 ~ "https://cip.tuik.gov.tr/assets/nuts3.min.js",
-    level == 4 ~ "https://cip.tuik.gov.tr/assets/nuts3.min.js",
+    level == 4 ~ "https://cip.tuik.gov.tr/assets/nuts4.min.js",
     level == 9 ~ "https://cip.tuik.gov.tr/assets/yerlesim_noktalari.min.js"
   )
 
