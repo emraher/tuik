@@ -95,6 +95,13 @@ all_dbs %>%
 # (dt <- geo_data(4, "TFE-GK105747-O23001"))
 #> Error in value[[3L]](cond) : 
 #>  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!
+
+# -------------------------------------------------------------------------- ###
+# Download Geo Map----
+# -------------------------------------------------------------------------- ###
+(dt_sf <- geo_map(9))
+
+(dt_sf <- geo_map(3))
 ```
 
 

@@ -1,4 +1,4 @@
-#' Get List of All Databases for a given Theme from TUIK
+#' Get Geographic Data from TUIK
 #'
 #' @param level NUTS Level (2, 3, or 4)
 #'

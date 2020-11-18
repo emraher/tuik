@@ -208,4 +208,49 @@ all_dbs %>%
 # (dt <- geo_data(4, "TFE-GK105747-O23001"))
 #> Error in value[[3L]](cond) : 
 #>  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!
+
+# -------------------------------------------------------------------------- ###
+# Download Geo Map----
+# -------------------------------------------------------------------------- ###
+(dt_sf <- geo_map(9))
+#> Simple feature collection with 1003 features and 4 fields
+#> geometry type:  POINT
+#> dimension:      XY
+#> bbox:           xmin: 25.89 ymin: 35.9 xmax: 44.58 ymax: 42.02
+#> geographic CRS: WGS 84
+#> # A tibble: 1,003 x 5
+#>    ad            tp    bs    bm      geometry
+#>    <chr>      <int> <int> <int>   <POINT [°]>
+#>  1 İSTANBUL       1     1     1 (29.01 41.62)
+#>  2 ANKARA         1     1     1 (32.85 39.94)
+#>  3 İZMİR          1     1     1 (27.15 38.41)
+#>  4 DİYARBAKIR     1     1     1 (40.21 37.92)
+#>  5 ESKİŞEHİR      1     1     0 (30.49 39.77)
+#>  6 ANTALYA        1     1     1  (30.7 36.91)
+#>  7 HATAY          1     1     1  (36.16 36.2)
+#>  8 MERSİN         1     1     0 (34.65 36.82)
+#>  9 KAYSERİ        1     1     1 (35.89 38.72)
+#> 10 MARDİN         1     1     0 (40.74 37.31)
+#> # … with 993 more rows
+
+(dt_sf <- geo_map(3))
+#> Simple feature collection with 81 features and 7 fields
+#> geometry type:  MULTIPOLYGON
+#> dimension:      XY
+#> bbox:           xmin: 25.66 ymin: 35.86 xmax: 44.81 ymax: 42.1
+#> geographic CRS: WGS 84
+#> # A tibble: 81 x 8
+#>        i LEVEL1_COD LEVEL2_COD LEVEL3_COD LEV1_NAME LEV2_NAME NAME 
+#>    <int> <chr>      <chr>      <chr>      <chr>     <chr>     <chr>
+#>  1     1 TR6        TR62       TR621      Akdeniz   Adana     ADANA
+#>  2     2 TRC        TRC1       TRC12      Guneydog… Gaziantep ADIY…
+#>  3     3 TR3        TR33       TR332      Ege       Manisa    AFYO…
+#>  4     7 TR6        TR61       TR611      Akdeniz   Antalya   ANTA…
+#>  5     9 TR3        TR32       TR321      Ege       Aydin     AYDIN
+#>  6    20 TR3        TR32       TR322      Ege       Aydin     DENI…
+#>  7    37 TR8        TR82       TR821      Bati Kar… Kastamonu KAST…
+#>  8    10 TR2        TR22       TR221      Bati Mar… Balikesir BALI…
+#>  9    32 TR6        TR61       TR612      Akdeniz   Antalya   ISPA…
+#> 10    35 TR3        TR31       TR310      Ege       Izmir     IZMIR
+#> # … with 71 more rows, and 1 more variable: geometry <MULTIPOLYGON [°]>
 ```

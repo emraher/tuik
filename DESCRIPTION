@@ -32,7 +32,10 @@ Imports:
     xml2,
     janitor,
     jsonlite,
-    tidyr
+    tidyr,
+    sf
 URL: https://github.com/emraher/tuik
 BugReports: https://github.com/emraher/tuik/issues
 VignetteBuilder: knitr
+Depends: 
+    V8

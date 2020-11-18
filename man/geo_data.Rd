@@ -2,7 +2,7 @@
 % Please edit documentation in R/tuik-geo-data.R
 \name{geo_data}
 \alias{geo_data}
-\title{Get List of All Databases for a given Theme from TUIK}
+\title{Get Geographic Data from TUIK}
 \usage{
 geo_data(level = NULL, variable = NULL)
 }
@@ -15,7 +15,7 @@ geo_data(level = NULL, variable = NULL)
 A data tibble
 }
 \description{
-Get List of All Databases for a given Theme from TUIK
+Get Geographic Data from TUIK
 }
 \examples{
 \dontrun{
