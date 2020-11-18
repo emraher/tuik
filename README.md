@@ -1,22 +1,22 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
 
 # tuik
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of `tuik` is to extract data file and database urls from [TUIK](https://data.tuik.gov.tr/) webpage. Package can also download data from [Geographical Statistics Portal](https://cip.tuik.gov.tr/).
+The goal of `tuik` is to extract data file and database URLs from
+[TUIK](https://data.tuik.gov.tr/) webpage. Package can also download
+data from [Geographical Statistics Portal](https://cip.tuik.gov.tr/).
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/emraher/tuik) with:
+You can install the development version from
+[GitHub](https://github.com/emraher/tuik) with:
 
 ``` r
 # install.packages("devtools")
@@ -25,8 +25,7 @@ devtools::install_github("emraher/tuik")
 
 ## Example
 
-
-```r
+``` r
 library(tuik)
 
 (st <- statistical_themes())
@@ -60,18 +59,18 @@ library(tuik)
 
 (stab <- statistical_tables("110"))
 #> # A tibble: 54 x 5
-#>    theme_name   theme_id data_name                             data_date  datafile_url                               
-#>    <chr>        <chr>    <chr>                                 <date>     <chr>                                      
-#>  1 Adalet ve S… 110      Suç Türü ve Suçun İşlendiği Yaş Grub… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  2 Adalet ve S… 110      İBBS, 3. Düzeyde, Suç Türü ve Suçun … 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  3 Adalet ve S… 110      Suç Türü ve Uyruğuna Göre Ceza İnfaz… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  4 Adalet ve S… 110      Suç Türü ve Medeni Durumuna Göre Cez… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  5 Adalet ve S… 110      Suç Türü ve Eğitim Durumuna Göre Cez… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  6 Adalet ve S… 110      İBBS 3. Düzeyde, Daimi İkametgah ve … 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  7 Adalet ve S… 110      Hükümlü ve Tutuklu Sayısı             2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  8 Adalet ve S… 110      İBBS, 1. Düzeyde, Suç Türü ve Suçun … 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#>  9 Adalet ve S… 110      Suç Türü ve Suçun İşlendiği Andaki Y… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
-#> 10 Adalet ve S… 110      Suç Türü ve Uyruğuna Göre Ceza İnfaz… 2020-11-02 http://data.tuik.gov.tr/Bulten/DownloadIst…
+#>    theme_name   theme_id data_name                data_date  datafile_url               
+#>    <chr>        <chr>    <chr>                    <date>     <chr>                      
+#>  1 Adalet ve S… 110      Suç Türü ve Suçun İşlen… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  2 Adalet ve S… 110      İBBS, 3. Düzeyde, Suç T… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  3 Adalet ve S… 110      Suç Türü ve Uyruğuna Gö… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  4 Adalet ve S… 110      Suç Türü ve Medeni Duru… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  5 Adalet ve S… 110      Suç Türü ve Eğitim Duru… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  6 Adalet ve S… 110      İBBS 3. Düzeyde, Daimi … 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  7 Adalet ve S… 110      Hükümlü ve Tutuklu Sayı… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  8 Adalet ve S… 110      İBBS, 1. Düzeyde, Suç T… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#>  9 Adalet ve S… 110      Suç Türü ve Suçun İşlen… 2020-11-02 http://data.tuik.gov.tr/Bu…
+#> 10 Adalet ve S… 110      Suç Türü ve Uyruğuna Gö… 2020-11-02 http://data.tuik.gov.tr/Bu…
 #> # … with 44 more rows
 
 # sdb <- statistical_databases("aaa")
@@ -83,14 +82,14 @@ library(tuik)
 
 (sdb <- statistical_databases(110))
 #> # A tibble: 6 x 4
-#>   theme_name     theme_id db_name                                           db_url                                   
-#>   <chr>          <chr>    <chr>                                             <chr>                                    
-#> 1 Adalet ve Seç… 110      "Milletvekili Seçim Sonuçları "                   http://biruni.tuik.gov.tr/secimdagitimap…
-#> 2 Adalet ve Seç… 110      "Mahalli İdareler Seçim Sonuçları "               http://biruni.tuik.gov.tr/secimdagitimap…
-#> 3 Adalet ve Seç… 110      "Cumhurbaşkanlığı Seçimi / Halk Oylaması Sonuçla… http://biruni.tuik.gov.tr/secimdagitimap…
-#> 4 Adalet ve Seç… 110      "Ceza İnfaz Kurumuna Giren Hükümlü İstatistikler… http://biruni.tuik.gov.tr/girenhukumluap…
-#> 5 Adalet ve Seç… 110      "Güvenlik Birimine Gelen veya Getirilen Çocuk İs… http://biruni.tuik.gov.tr/medas/?kn=98&l…
-#> 6 Adalet ve Seç… 110      "Ceza İnfaz Kurumundan Çıkan (Tahliye Edilen) Hü… http://biruni.tuik.gov.tr/cikanhukumluap…
+#>   theme_name    theme_id db_name                            db_url                      
+#>   <chr>         <chr>    <chr>                              <chr>                       
+#> 1 Adalet ve Se… 110      "Milletvekili Seçim Sonuçları "    http://biruni.tuik.gov.tr/s…
+#> 2 Adalet ve Se… 110      "Mahalli İdareler Seçim Sonuçları… http://biruni.tuik.gov.tr/s…
+#> 3 Adalet ve Se… 110      "Cumhurbaşkanlığı Seçimi / Halk O… http://biruni.tuik.gov.tr/s…
+#> 4 Adalet ve Se… 110      "Ceza İnfaz Kurumuna Giren Hüküml… http://biruni.tuik.gov.tr/g…
+#> 5 Adalet ve Se… 110      "Güvenlik Birimine Gelen veya Get… http://biruni.tuik.gov.tr/m…
+#> 6 Adalet ve Se… 110      "Ceza İnfaz Kurumundan Çıkan (Tah… http://biruni.tuik.gov.tr/c…
 
 
 # -------------------------------------------------------------------------- ###
@@ -145,162 +144,6 @@ all_dbs %>%
 
 # Download data for a given level and variable
 (dt <- geo_data(2, "SNM-GK160951-O33303"))
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
-#> New names:
-#> * `` -> ...1
-#> * `` -> ...2
-#> * `` -> ...3
-#> * `` -> ...4
-#> * `` -> ...5
 #> # A tibble: 130 x 3
 #>    code  date  sinema_film_sayisi
 #>    <chr> <chr>              <dbl>
@@ -320,5 +163,3 @@ all_dbs %>%
 #> Error in value[[3L]](cond) : 
 #>  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!
 ```
-
-
