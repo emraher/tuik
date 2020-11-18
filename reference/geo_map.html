@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Geographic Data from TUIK — geo_data • tuik</title>
+<title>Get Maps from TUIK — geo_map • tuik</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get Geographic Data from TUIK — geo_data" />
-<meta property="og:description" content="Get Geographic Data from TUIK" />
+<meta property="og:title" content="Get Maps from TUIK — geo_map" />
+<meta property="og:description" content="Get Maps from TUIK" />
 
 
 
@@ -120,37 +120,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Geographic Data from TUIK</h1>
-    <small class="dont-index">Source: <a href='https://github.com/emraher/tuik/blob/master/R/tuik-geo-data.R'><code>R/tuik-geo-data.R</code></a></small>
-    <div class="hidden name"><code>geo_data.Rd</code></div>
+    <h1>Get Maps from TUIK</h1>
+    <small class="dont-index">Source: <a href='https://github.com/emraher/tuik/blob/master/R/tuik-geo-map.R'><code>R/tuik-geo-map.R</code></a></small>
+    <div class="hidden name"><code>geo_map.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get Geographic Data from TUIK</p>
+    <p>Get Maps from TUIK</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geo_data</span><span class='op'>(</span>level <span class='op'>=</span> <span class='cn'>NULL</span>, variable <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>geo_map</span><span class='op'>(</span>level <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>9</span><span class='op'>)</span>, dataframe <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>level</th>
-      <td><p>NUTS Level (2, 3, or 4)</p></td>
+      <td><p>NUTS Level (2, 3, 4, or 9)</p></td>
     </tr>
     <tr>
-      <th>variable</th>
-      <td><p>Data Series Name</p></td>
+      <th>dataframe</th>
+      <td><p>Return data as data frame</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data tibble</p>
+    <p>An sf object or tibble</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>geo_data</span><span class='op'>(</span>level <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'>geo_map</span><span class='op'>(</span>level <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>

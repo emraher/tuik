@@ -275,7 +275,52 @@
 
 <span class="co"># (dt &lt;- geo_data(4, "TFE-GK105747-O23001"))</span>
 <span class="co">#&gt; Error in value[[3L]](cond) : </span>
-<span class="co">#&gt;  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!</span></code></pre></div>
+<span class="co">#&gt;  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!</span>
+
+<span class="co"># -------------------------------------------------------------------------- ###</span>
+<span class="co"># Download Geo Map----</span>
+<span class="co"># -------------------------------------------------------------------------- ###</span>
+<span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Simple feature collection with 1003 features and 4 fields</span>
+<span class="co">#&gt; geometry type:  POINT</span>
+<span class="co">#&gt; dimension:      XY</span>
+<span class="co">#&gt; bbox:           xmin: 25.89 ymin: 35.9 xmax: 44.58 ymax: 42.02</span>
+<span class="co">#&gt; geographic CRS: WGS 84</span>
+<span class="co">#&gt; # A tibble: 1,003 x 5</span>
+<span class="co">#&gt;    ad            tp    bs    bm      geometry</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;POINT [°]&gt;</span>
+<span class="co">#&gt;  1 İSTANBUL       1     1     1 (29.01 41.62)</span>
+<span class="co">#&gt;  2 ANKARA         1     1     1 (32.85 39.94)</span>
+<span class="co">#&gt;  3 İZMİR          1     1     1 (27.15 38.41)</span>
+<span class="co">#&gt;  4 DİYARBAKIR     1     1     1 (40.21 37.92)</span>
+<span class="co">#&gt;  5 ESKİŞEHİR      1     1     0 (30.49 39.77)</span>
+<span class="co">#&gt;  6 ANTALYA        1     1     1  (30.7 36.91)</span>
+<span class="co">#&gt;  7 HATAY          1     1     1  (36.16 36.2)</span>
+<span class="co">#&gt;  8 MERSİN         1     1     0 (34.65 36.82)</span>
+<span class="co">#&gt;  9 KAYSERİ        1     1     1 (35.89 38.72)</span>
+<span class="co">#&gt; 10 MARDİN         1     1     0 (40.74 37.31)</span>
+<span class="co">#&gt; # … with 993 more rows</span>
+
+<span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Simple feature collection with 81 features and 7 fields</span>
+<span class="co">#&gt; geometry type:  MULTIPOLYGON</span>
+<span class="co">#&gt; dimension:      XY</span>
+<span class="co">#&gt; bbox:           xmin: 25.66 ymin: 35.86 xmax: 44.81 ymax: 42.1</span>
+<span class="co">#&gt; geographic CRS: WGS 84</span>
+<span class="co">#&gt; # A tibble: 81 x 8</span>
+<span class="co">#&gt;        i LEVEL1_COD LEVEL2_COD LEVEL3_COD LEV1_NAME LEV2_NAME NAME </span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;</span>
+<span class="co">#&gt;  1     1 TR6        TR62       TR621      Akdeniz   Adana     ADANA</span>
+<span class="co">#&gt;  2     2 TRC        TRC1       TRC12      Guneydog… Gaziantep ADIY…</span>
+<span class="co">#&gt;  3     3 TR3        TR33       TR332      Ege       Manisa    AFYO…</span>
+<span class="co">#&gt;  4     7 TR6        TR61       TR611      Akdeniz   Antalya   ANTA…</span>
+<span class="co">#&gt;  5     9 TR3        TR32       TR321      Ege       Aydin     AYDIN</span>
+<span class="co">#&gt;  6    20 TR3        TR32       TR322      Ege       Aydin     DENI…</span>
+<span class="co">#&gt;  7    37 TR8        TR82       TR821      Bati Kar… Kastamonu KAST…</span>
+<span class="co">#&gt;  8    10 TR2        TR22       TR221      Bati Mar… Balikesir BALI…</span>
+<span class="co">#&gt;  9    32 TR6        TR61       TR612      Akdeniz   Antalya   ISPA…</span>
+<span class="co">#&gt; 10    35 TR3        TR31       TR310      Ege       Izmir     IZMIR</span>
+<span class="co">#&gt; # … with 71 more rows, and 1 more variable: geometry &lt;MULTIPOLYGON [°]&gt;</span></code></pre></div>
 </div>
 </div>
   </div>
