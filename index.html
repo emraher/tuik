@@ -161,6 +161,50 @@
 <span class="co">#&gt; 5 Adalet ve Se… 110      "Güvenlik Birimine Gelen veya Get… http://biruni.tuik.gov.tr/m…</span>
 <span class="co">#&gt; 6 Adalet ve Se… 110      "Ceza İnfaz Kurumundan Çıkan (Tah… http://biruni.tuik.gov.tr/c…</span>
 
+<span class="co"># -------------------------------------------------------------------------- ###</span>
+<span class="co"># Saving Data Files----</span>
+<span class="co"># -------------------------------------------------------------------------- ###</span>
+<span class="co"># Read xls files directly into R</span>
+<span class="co"># NOTE: TUIK xls files are messy!!!</span>
+<span class="op">(</span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu">gdata</span><span class="fu">::</span><span class="fu">read.xls</span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">datafile_url</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 433 x 256</span>
+<span class="co">#&gt;    Suç.türü.ve.suç… X     X.1   X.2     X.3 X.4   X.5   X.6   X.7   X.8   X.9   X.10 </span>
+<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;lgl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 "Convicts recei… ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   </span>
+<span class="co">#&gt;  2 ""               "Yaş… ""    ""       NA NA    ""    ""    ""    ""    ""    ""   </span>
+<span class="co">#&gt;  3 ""               "Top… ""    ""       NA NA    "12 … ""    "15 … ""    "18 … ""   </span>
+<span class="co">#&gt;  4 ""               "Top… "Erk… "Kad…    NA NA    "Erk… "Kad… "Erk… "Kad… "Erk… "Kad…</span>
+<span class="co">#&gt;  5 "Su\xe7 t\xfcr\… "Tot… "Mal… "Fem…    NA NA    "Mal… "Fem… "Mal… "Fem… "Mal… "Fem…</span>
+<span class="co">#&gt;  6 "2019"           ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   </span>
+<span class="co">#&gt;  7 "Toplam - Total" "281… "270… "11 …    NA NA    "1 9… "71"  "10 … "300" "69 … "2 7…</span>
+<span class="co">#&gt;  8 "\xd6ld\xfcrme … "9 5… "9 3… "235"    NA NA    "62"  "4"   "608" "11"  "2 6… "75" </span>
+<span class="co">#&gt;  9 "Yaralama - Ass… "34 … "33 … "953"    NA NA    "46"  "2"   "413" "2"   "7 9… "184"</span>
+<span class="co">#&gt; 10 "Cinsel su\xe7l… "5 8… "5 7… "42"     NA NA    "245" "-"   "624" "6"   "1 3… "3"  </span>
+<span class="co">#&gt; # … with 423 more rows, and 244 more variables: X.11 &lt;chr&gt;, X.12 &lt;chr&gt;, X.13 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   X.14 &lt;chr&gt;, X.15 &lt;chr&gt;, X.16 &lt;chr&gt;, X.17 &lt;chr&gt;, X.18 &lt;chr&gt;, X.19 &lt;chr&gt;, X.20 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   X.21 &lt;chr&gt;, X.22 &lt;chr&gt;, X.23 &lt;chr&gt;, X.24 &lt;lgl&gt;, X.25 &lt;lgl&gt;, X.26 &lt;lgl&gt;, X.27 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.28 &lt;lgl&gt;, X.29 &lt;lgl&gt;, X.30 &lt;lgl&gt;, X.31 &lt;lgl&gt;, X.32 &lt;lgl&gt;, X.33 &lt;lgl&gt;, X.34 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.35 &lt;lgl&gt;, X.36 &lt;lgl&gt;, X.37 &lt;lgl&gt;, X.38 &lt;lgl&gt;, X.39 &lt;lgl&gt;, X.40 &lt;lgl&gt;, X.41 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.42 &lt;lgl&gt;, X.43 &lt;lgl&gt;, X.44 &lt;lgl&gt;, X.45 &lt;lgl&gt;, X.46 &lt;lgl&gt;, X.47 &lt;lgl&gt;, X.48 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.49 &lt;lgl&gt;, X.50 &lt;lgl&gt;, X.51 &lt;lgl&gt;, X.52 &lt;lgl&gt;, X.53 &lt;lgl&gt;, X.54 &lt;lgl&gt;, X.55 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.56 &lt;lgl&gt;, X.57 &lt;lgl&gt;, X.58 &lt;lgl&gt;, X.59 &lt;lgl&gt;, X.60 &lt;lgl&gt;, X.61 &lt;lgl&gt;, X.62 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.63 &lt;lgl&gt;, X.64 &lt;lgl&gt;, X.65 &lt;lgl&gt;, X.66 &lt;lgl&gt;, X.67 &lt;lgl&gt;, X.68 &lt;lgl&gt;, X.69 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.70 &lt;lgl&gt;, X.71 &lt;lgl&gt;, X.72 &lt;lgl&gt;, X.73 &lt;lgl&gt;, X.74 &lt;lgl&gt;, X.75 &lt;lgl&gt;, X.76 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.77 &lt;lgl&gt;, X.78 &lt;lgl&gt;, X.79 &lt;lgl&gt;, X.80 &lt;lgl&gt;, X.81 &lt;lgl&gt;, X.82 &lt;lgl&gt;, X.83 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.84 &lt;lgl&gt;, X.85 &lt;lgl&gt;, X.86 &lt;lgl&gt;, X.87 &lt;lgl&gt;, X.88 &lt;lgl&gt;, X.89 &lt;lgl&gt;, X.90 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.91 &lt;lgl&gt;, X.92 &lt;lgl&gt;, X.93 &lt;lgl&gt;, X.94 &lt;lgl&gt;, X.95 &lt;lgl&gt;, X.96 &lt;lgl&gt;, X.97 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.98 &lt;lgl&gt;, X.99 &lt;lgl&gt;, X.100 &lt;lgl&gt;, X.101 &lt;lgl&gt;, X.102 &lt;lgl&gt;, X.103 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.104 &lt;lgl&gt;, X.105 &lt;lgl&gt;, X.106 &lt;lgl&gt;, X.107 &lt;lgl&gt;, X.108 &lt;lgl&gt;, X.109 &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   X.110 &lt;lgl&gt;, …</span>
+
+<span class="co"># Download file from URL</span>
+<span class="va">filename</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/make_clean_names.html">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
+                   <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/make_clean_names.html">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">datafile_url</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,
+              destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~/Downloads/"</span>, <span class="va">filename</span>, <span class="st">".xls"</span><span class="op">)</span>,
+              mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
+
 
 <span class="co"># -------------------------------------------------------------------------- ###</span>
 <span class="co"># All DB Links----</span>
