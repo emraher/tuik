@@ -96,7 +96,8 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emraher/tuik">tuik</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emraher/tuik">tuik</a></span><span class="op">)</span>
 
 <span class="op">(</span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/statistical_themes.html">statistical_themes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 17 x 2</span>
@@ -321,6 +322,55 @@
 <span class="co">#&gt;  9    32 TR6        TR61       TR612      Akdeniz   Antalya   ISPA…</span>
 <span class="co">#&gt; 10    35 TR3        TR31       TR310      Ege       Izmir     IZMIR</span>
 <span class="co">#&gt; # … with 71 more rows, and 1 more variable: geometry &lt;MULTIPOLYGON [°]&gt;</span></code></pre></div>
+</div>
+<div id="map-examples" class="section level2">
+<h2 class="hasAnchor">
+<a href="#map-examples" class="anchor"></a>Map Examples</h2>
+<div id="nuts-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#nuts-3" class="anchor"></a>NUTS-3</h3>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span><span class="fl">3</span>, <span class="st">"ADNKS-GK137473-O29001"</span><span class="op">)</span>
+<span class="va">pop</span> <span class="op">&lt;-</span> <span class="va">pop</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">mutate</span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">code</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
+
+<span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">dt_sf</span>, <span class="va">pop</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"i"</span> <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dt_sf</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">toplam_nufus_kisi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Population in 2019"</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
+</div>
+<div id="lau-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#lau-1" class="anchor"></a>LAU-1</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">"ADNKS-GK137473-O29001"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">mutate</span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">code</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">left_join</span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"i"</span> <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">toplam_nufus_kisi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Population in 2019"</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">"ADNKS-GK137473-O29001"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">mutate</span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">code</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">left_join</span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"i"</span> <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">iladi</span> <span class="op">==</span> <span class="st">"ANKARA"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">toplam_nufus_kisi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Population in 2019"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">hrbrthemes</span><span class="fu">::</span><span class="fu">theme_ipsum_rc</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
+</div>
 </div>
 </div>
   </div>
