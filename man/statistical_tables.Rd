@@ -16,6 +16,8 @@ A data tibble
 Get List of All Statistical Tables for a given Theme from TUIK
 }
 \examples{
-\dontrun{statistical_tables(102)}
+\dontrun{
+statistical_tables(102)
+}
 
 }

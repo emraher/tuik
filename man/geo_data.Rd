@@ -18,6 +18,8 @@ A data tibble
 Get List of All Databases for a given Theme from TUIK
 }
 \examples{
-\dontrun{geo_data(level = 2)}
+\dontrun{
+geo_data(level = 2)
+}
 
 }

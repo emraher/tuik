@@ -56,6 +56,21 @@ library(tuik)
 
 (sdb <- statistical_databases(110))
 
+# -------------------------------------------------------------------------- ###
+# Saving Data Files----
+# -------------------------------------------------------------------------- ###
+# Read xls files directly into R
+# NOTE: TUIK xls files are messy!!!
+(dt <- tibble::as_tibble(gdata::read.xls(stab$datafile_url[1])))
+
+# Download file from URL
+filename <- paste0(janitor::make_clean_names(stab$data_name[1]),
+                   janitor::make_clean_names(stab$data_date[1]))
+
+download.file(stab$datafile_url[1],
+              destfile = paste0("~/Downloads/", filename, ".xls"),
+              mode = "wb")
+
 
 # -------------------------------------------------------------------------- ###
 # All DB Links----

@@ -16,6 +16,8 @@ A data tibble
 Get List of All Databases for a given Theme from TUIK
 }
 \examples{
-\dontrun{statistical_databases(102)}
+\dontrun{
+statistical_databases(102)
+}
 
 }

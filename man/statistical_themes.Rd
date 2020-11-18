@@ -13,6 +13,8 @@ A tibble
 Get Statistical Themes and URLS from TUIK
 }
 \examples{
-\dontrun{statistical_themes()}
+\dontrun{
+statistical_themes()
+}
 
 }

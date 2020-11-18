@@ -93,6 +93,50 @@ library(tuik)
 #> 5 Adalet ve Se… 110      "Güvenlik Birimine Gelen veya Get… http://biruni.tuik.gov.tr/m…
 #> 6 Adalet ve Se… 110      "Ceza İnfaz Kurumundan Çıkan (Tah… http://biruni.tuik.gov.tr/c…
 
+# -------------------------------------------------------------------------- ###
+# Saving Data Files----
+# -------------------------------------------------------------------------- ###
+# Read xls files directly into R
+# NOTE: TUIK xls files are messy!!!
+(dt <- tibble::as_tibble(gdata::read.xls(stab$datafile_url[1])))
+#> # A tibble: 433 x 256
+#>    Suç.türü.ve.suç… X     X.1   X.2     X.3 X.4   X.5   X.6   X.7   X.8   X.9   X.10 
+#>    <chr>            <chr> <chr> <chr> <int> <lgl> <chr> <chr> <chr> <chr> <chr> <chr>
+#>  1 "Convicts recei… ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
+#>  2 ""               "Yaş… ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
+#>  3 ""               "Top… ""    ""       NA NA    "12 … ""    "15 … ""    "18 … ""   
+#>  4 ""               "Top… "Erk… "Kad…    NA NA    "Erk… "Kad… "Erk… "Kad… "Erk… "Kad…
+#>  5 "Su\xe7 t\xfcr\… "Tot… "Mal… "Fem…    NA NA    "Mal… "Fem… "Mal… "Fem… "Mal… "Fem…
+#>  6 "2019"           ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
+#>  7 "Toplam - Total" "281… "270… "11 …    NA NA    "1 9… "71"  "10 … "300" "69 … "2 7…
+#>  8 "\xd6ld\xfcrme … "9 5… "9 3… "235"    NA NA    "62"  "4"   "608" "11"  "2 6… "75" 
+#>  9 "Yaralama - Ass… "34 … "33 … "953"    NA NA    "46"  "2"   "413" "2"   "7 9… "184"
+#> 10 "Cinsel su\xe7l… "5 8… "5 7… "42"     NA NA    "245" "-"   "624" "6"   "1 3… "3"  
+#> # … with 423 more rows, and 244 more variables: X.11 <chr>, X.12 <chr>, X.13 <chr>,
+#> #   X.14 <chr>, X.15 <chr>, X.16 <chr>, X.17 <chr>, X.18 <chr>, X.19 <chr>, X.20 <chr>,
+#> #   X.21 <chr>, X.22 <chr>, X.23 <chr>, X.24 <lgl>, X.25 <lgl>, X.26 <lgl>, X.27 <lgl>,
+#> #   X.28 <lgl>, X.29 <lgl>, X.30 <lgl>, X.31 <lgl>, X.32 <lgl>, X.33 <lgl>, X.34 <lgl>,
+#> #   X.35 <lgl>, X.36 <lgl>, X.37 <lgl>, X.38 <lgl>, X.39 <lgl>, X.40 <lgl>, X.41 <lgl>,
+#> #   X.42 <lgl>, X.43 <lgl>, X.44 <lgl>, X.45 <lgl>, X.46 <lgl>, X.47 <lgl>, X.48 <lgl>,
+#> #   X.49 <lgl>, X.50 <lgl>, X.51 <lgl>, X.52 <lgl>, X.53 <lgl>, X.54 <lgl>, X.55 <lgl>,
+#> #   X.56 <lgl>, X.57 <lgl>, X.58 <lgl>, X.59 <lgl>, X.60 <lgl>, X.61 <lgl>, X.62 <lgl>,
+#> #   X.63 <lgl>, X.64 <lgl>, X.65 <lgl>, X.66 <lgl>, X.67 <lgl>, X.68 <lgl>, X.69 <lgl>,
+#> #   X.70 <lgl>, X.71 <lgl>, X.72 <lgl>, X.73 <lgl>, X.74 <lgl>, X.75 <lgl>, X.76 <lgl>,
+#> #   X.77 <lgl>, X.78 <lgl>, X.79 <lgl>, X.80 <lgl>, X.81 <lgl>, X.82 <lgl>, X.83 <lgl>,
+#> #   X.84 <lgl>, X.85 <lgl>, X.86 <lgl>, X.87 <lgl>, X.88 <lgl>, X.89 <lgl>, X.90 <lgl>,
+#> #   X.91 <lgl>, X.92 <lgl>, X.93 <lgl>, X.94 <lgl>, X.95 <lgl>, X.96 <lgl>, X.97 <lgl>,
+#> #   X.98 <lgl>, X.99 <lgl>, X.100 <lgl>, X.101 <lgl>, X.102 <lgl>, X.103 <lgl>,
+#> #   X.104 <lgl>, X.105 <lgl>, X.106 <lgl>, X.107 <lgl>, X.108 <lgl>, X.109 <lgl>,
+#> #   X.110 <lgl>, …
+
+# Download file from URL
+filename <- paste0(janitor::make_clean_names(stab$data_name[1]),
+                   janitor::make_clean_names(stab$data_date[1]))
+
+download.file(stab$datafile_url[1],
+              destfile = paste0("~/Downloads/", filename, ".xls"),
+              mode = "wb")
+
 
 # -------------------------------------------------------------------------- ###
 # All DB Links----
