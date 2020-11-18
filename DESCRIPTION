@@ -1,23 +1,38 @@
 Package: tuik
-Title: What the Package Does (One Line, Title Case)
+Title: Download Data File And Database Urls from TUIK
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Emrah",
+           family = "Er",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "eer@eremrah.com")
+Description: Download Data File And Database Urls from TUIK.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
-    roxygen2
+    roxygen2,
+    covr,
+    knitr,
+    rmarkdown
 Imports: 
     rlang (>= 0.1.2),
-    magrittr
+    magrittr,
+    crayon,
+    crul,
+    dplyr,
+    lubridate,
+    purrr,
+    rvest,
+    stringr,
+    tibble,
+    tidyselect,
+    xml2,
+    janitor,
+    jsonlite,
+    tidyr
 URL: https://github.com/emraher/tuik
 BugReports: https://github.com/emraher/tuik/issues
+VignetteBuilder: knitr

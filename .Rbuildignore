@@ -1,2 +1,10 @@
 ^tuik\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
+^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$

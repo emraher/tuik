@@ -1,0 +1,84 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# tuik
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+The goal of `tuik` is to extract data file and database urls from [TUIK](https://data.tuik.gov.tr/) webpage. Package can also download data from [Geographical Statistics Portal](https://cip.tuik.gov.tr/).
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/emraher/tuik) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("emraher/tuik")
+```
+
+## Example
+
+```{r}
+library(tuik)
+
+(st <- statistical_themes())
+
+# stab <- statistical_tables("aaa")
+#> Error in check_theme_id(theme) : 
+#>  You should select a valid theme ID!
+
+# stab <- statistical_tables(c(123, 143))
+#> Error in check_theme_id(theme) : You can select only one theme!
+
+(stab <- statistical_tables("110"))
+
+# sdb <- statistical_databases("aaa")
+#> Error in check_theme_id(theme) : 
+#>  You should select a valid theme ID!
+
+# sdb <- statistical_databases(c(123, 143))
+#> Error in check_theme_id(theme) : You can select only one theme!
+
+(sdb <- statistical_databases(110))
+
+
+# -------------------------------------------------------------------------- ###
+# All DB Links----
+# -------------------------------------------------------------------------- ###
+all_dbs <- purrr::map_df(.x = st$theme_id, .f = ~statistical_databases(.x))
+
+all_dbs %>%
+  dplyr::count(theme_name, name = "database_count")
+
+# -------------------------------------------------------------------------- ###
+# Download Geo Data----
+# -------------------------------------------------------------------------- ###
+# Download Variable Names and Codes
+(dt <- geo_data())
+
+# dt <- geo_data(5)
+#> Error in geo_data(5) : There's no IBBS at this level!
+
+# Download data for a given level and variable
+(dt <- geo_data(2, "SNM-GK160951-O33303"))
+
+# (dt <- geo_data(4, "TFE-GK105747-O23001"))
+#> Error in value[[3L]](cond) : 
+#>  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!
+```
+
+

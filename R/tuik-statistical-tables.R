@@ -1,0 +1,59 @@
+#' Get List of All Statistical Tables for a given Theme from TUIK
+#'
+#' @param theme Data Theme
+
+#' @return A data tibble
+#'
+#' @examples
+#' \dontrun{
+#' statistical_tables(102)
+#' }
+#'
+#' @export
+statistical_tables <- function(theme) {
+  sthemes <- check_theme_id(theme)
+
+  request_url <- paste0(
+    "https://data.tuik.gov.tr/Kategori/GetIstatistikselTablolar?UstId=",
+    theme,
+    "&DilId=1&Page=1&Count=10000&Arsiv=true"
+  )
+
+  resp <- make_request(request_url)
+
+  doc <- resp %>%
+    xml2::read_html()
+
+  table_names <- doc %>%
+    rvest::html_table() %>%
+    `[[`(1) %>%
+    dplyr::select(-.data$X3, -.data$X4) %>%
+    dplyr::filter(.data$X2 != "") %>%
+    dplyr::mutate(X1 = stringr::str_remove_all(.data$X1, "\\u0130statistiksel TablolarYeni\r\n[ ]+")) %>%
+    dplyr::mutate(X1 = stringr::str_remove_all(.data$X1, "\\u0130statistiksel Tablolar\r\n[ ]+"))
+
+  table_urls <- doc %>%
+    rvest::html_nodes("a") %>%
+    rvest::html_attr("href")
+
+  table_meta <- doc %>%
+    rvest::html_nodes("a") %>%
+    rvest::html_attr("title")
+
+  table_urls <- tibble::tibble(table_urls, table_meta) %>%
+    dplyr::filter(table_meta != "Tablo Metaverisi") %>%
+    dplyr::select(-.data$table_meta) %>%
+    dplyr::mutate(table_urls = paste0("http://data.tuik.gov.tr", table_urls))
+
+  sthemes <- sthemes %>%
+    dplyr::filter(.data$theme_id %in% theme)
+
+
+  st <- tibble::tibble(table_names, table_urls) %>%
+    purrr::set_names("data_name", "data_date", "datafile_url") %>%
+    dplyr::mutate(data_date = lubridate::dmy(.data$data_date, locale = "tr_TR")) %>%
+    dplyr::bind_cols(sthemes) %>%
+    dplyr::select(.data$theme_name, .data$theme_id, tidyselect::everything())
+
+  return(st)
+}
