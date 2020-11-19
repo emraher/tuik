@@ -9,6 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/emraher/tuik/workflows/R-CMD-check/badge.svg)](https://github.com/emraher/tuik/actions)
+[![DOI](https://zenodo.org/badge/313863336.svg)](https://zenodo.org/badge/latestdoi/313863336)
 <!-- badges: end -->
 
 The goal of `tuik` is to extract data file and database URLs from
