@@ -346,3 +346,135 @@ geo_data(4, "ADNKS-GK137473-O29001") %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+### Hex and Dorling
+
+``` r
+library(tidyverse)
+library(sf)
+library(cartogram)
+library(geogrid)
+library(tuik)
+
+# -------------------------------------------------------------------------- ###
+# Hex----
+# -------------------------------------------------------------------------- ###
+# Read map data and transform CRS
+tur_hex_map <- st_transform(geo_map(level = 3), crs = 3395)
+
+# Read data and merge
+tur_hex_dt <- geo_data(3, "ULS-GK093-O009") %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code)) %>% 
+  left_join(tur_hex_map, .)
+
+# Choose one seed according to these plots
+par(mfrow = c(4, 4), mar = c(0, 0, 2, 0))
+for (i in 1:16) {
+  new_cells <- calculate_grid(shape = tur_hex_dt, grid_type = "hexagonal", seed = i)
+  plot(new_cells, main = paste("Seed", i, sep = " "))
+}
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+``` r
+# Create hex map
+new_hex <- calculate_grid(shape = tur_hex_dt, grid_type = "hexagonal", seed = 9)
+result_hex <- assign_polygons(tur_hex_dt, new_hex)
+
+# Plot
+result_hex %>% 
+  mutate(NAME = stringr::str_replace(NAME, "AFYONKARAHISAR", "AFYON")) %>% 
+  mutate(NAME = stringr::str_replace(NAME, "KAHRAMANMARAŞ", "K.MARAŞ")) %>% 
+  ggplot() +
+  geom_sf(aes(fill = bin_kisi_basina_otomobil_sayisi), lwd = 0.1) +
+  geom_sf_text(aes(label = NAME), color = "black", size = 2) +
+  coord_sf(datum = NA) + 
+  rcartocolor::scale_fill_carto_c(palette = "OrYel") +
+  hrbrthemes::theme_ipsum_rc() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       y = "",
+       x = "",
+       title = "2019 Yılında Bin Kişi Başına Otomobil Sayısı",
+       caption = "Kaynak: TÜİK")
+```
+
+<img src="man/figures/README-unnamed-chunk-7-2.png" width="100%" />
+
+``` r
+# -------------------------------------------------------------------------- ###
+# Dorling----
+# -------------------------------------------------------------------------- ###
+# Read map data and transform CRS
+tur_map <- st_transform(geo_map(level = 4), crs = 3395)
+
+# Read data and merge
+tur_pop <- geo_data(4, "ADNKS-GK137473-O29001")
+tur_ill <- geo_data(4, "ULE-GK160887-O29502")
+
+tur_dt <- left_join(tur_pop, tur_ill) %>% 
+  filter(date == 2019) %>% 
+  mutate(code = as.numeric(code)) %>% 
+  left_join(tur_map, .) %>% 
+  mutate(value = 100*(okuma_yazma_bilmeyen_sayisi/toplam_nufus_kisi))
+
+# Create dorling maps
+tur_dorling1 <- cartogram_dorling(tur_dt, "okuma_yazma_bilmeyen_sayisi", 0.4)
+
+tur_dorling1 %>% 
+  ggplot() +
+  geom_sf(aes(fill = okuma_yazma_bilmeyen_sayisi), lwd = 0.1) +
+  coord_sf(datum = NA) + 
+  scale_fill_viridis_c(option = "B") +
+  theme_bw() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
+       caption = "Kaynak: TÜİK")
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+``` r
+tur_dorling2 <- cartogram_dorling(tur_dt, "toplam_nufus_kisi", 0.4)
+
+tur_dorling2 %>% 
+  ggplot() +
+  geom_sf(aes(fill = toplam_nufus_kisi), lwd = 0.1) +
+  coord_sf(datum = NA) + 
+  scale_fill_viridis_c(option = "B") +
+  theme_bw() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       title = "2019 Yılında Nüfus",
+       caption = "Kaynak: TÜİK")
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+``` r
+tur_dorling3 <- cartogram_dorling(tur_dt, "value", 0.4)
+
+tur_dorling3 %>% 
+  ggplot() +
+  geom_sf(aes(fill = value), lwd = 0.1) +
+  coord_sf(datum = NA) + 
+  scale_fill_viridis_c(option = "B") +
+  theme_bw() +
+  theme(legend.position = "bottom", 
+        legend.key.width = unit(3, "cm"),
+        plot.title = element_text(hjust = 0.5)) +
+  labs(fill = "",
+       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısının Nüfusa Oranı (%)",
+       caption = "Kaynak: TÜİK")
+```
+
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
