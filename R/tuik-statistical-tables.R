@@ -48,12 +48,16 @@ statistical_tables <- function(theme) {
   sthemes <- sthemes %>%
     dplyr::filter(.data$theme_id %in% theme)
 
+  # Quick fix for locale
+  mylocale <- dplyr::if_else(Sys.info()["sysname"] == "Windows", "Turkish_Turkey.1254", "tr_TR")
+
 
   st <- tibble::tibble(table_names, table_urls) %>%
     purrr::set_names("data_name", "data_date", "datafile_url") %>%
-    dplyr::mutate(data_date = lubridate::dmy(.data$data_date, locale = "tr_TR")) %>%
+    dplyr::mutate(data_date = lubridate::dmy(.data$data_date, locale = mylocale)) %>%
     dplyr::bind_cols(sthemes) %>%
     dplyr::select(.data$theme_name, .data$theme_id, tidyselect::everything())
+
 
   return(st)
 }
