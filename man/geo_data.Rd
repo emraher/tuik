@@ -4,12 +4,24 @@
 \alias{geo_data}
 \title{Get Geographic Data from TUIK}
 \usage{
-geo_data(level = NULL, variable = NULL)
+geo_data(
+  variable_no = NULL,
+  variable_level = NULL,
+  variable_source = NULL,
+  variable_period = NULL,
+  variable_recnum = NULL
+)
 }
 \arguments{
-\item{level}{NUTS Level (2, 3, or 4)}
+\item{variable_no}{Data Series Number}
 
-\item{variable}{Data Series Name}
+\item{variable_level}{NUTS Level (2, 3, or 4)}
+
+\item{variable_source}{Data Series Source ("medas" or "ilGostergeleri")}
+
+\item{variable_period}{Data Series Period ("yillik" or "aylik")}
+
+\item{variable_recordnum}{Data Series Record Number (3, 5, or 24)}
 }
 \value{
 A data tibble

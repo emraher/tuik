@@ -1,6 +1,6 @@
 Package: tuik
 Title: Download Data File And Database Urls from TUIK
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Emrah",
            family = "Er",
@@ -11,7 +11,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 Suggests: 
     roxygen2,
     covr,
@@ -33,7 +33,8 @@ Imports:
     janitor,
     jsonlite,
     tidyr,
-    sf
+    sf,
+    rjson
 URL: https://github.com/emraher/tuik
 BugReports: https://github.com/emraher/tuik/issues
 VignetteBuilder: knitr

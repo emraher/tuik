@@ -33,7 +33,7 @@ library(tidyverse)
 library(tuik)
 
 (st <- statistical_themes())
-#> # A tibble: 17 x 2
+#> # A tibble: 17 × 2
 #>    theme_name                         theme_id
 #>    <chr>                              <chr>   
 #>  1 Adalet ve Seçim                    110     
@@ -62,20 +62,20 @@ library(tuik)
 #> Error in check_theme_id(theme) : You can select only one theme!
 
 (stab <- statistical_tables("110"))
-#> # A tibble: 54 x 5
-#>    theme_name   theme_id data_name                data_date  datafile_url               
-#>    <chr>        <chr>    <chr>                    <date>     <chr>                      
-#>  1 Adalet ve S… 110      Suç Türü ve Suçun İşlen… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  2 Adalet ve S… 110      İBBS, 3. Düzeyde, Suç T… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  3 Adalet ve S… 110      Suç Türü ve Uyruğuna Gö… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  4 Adalet ve S… 110      Suç Türü ve Medeni Duru… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  5 Adalet ve S… 110      Suç Türü ve Eğitim Duru… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  6 Adalet ve S… 110      İBBS 3. Düzeyde, Daimi … 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  7 Adalet ve S… 110      Hükümlü ve Tutuklu Sayı… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  8 Adalet ve S… 110      İBBS, 1. Düzeyde, Suç T… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#>  9 Adalet ve S… 110      Suç Türü ve Suçun İşlen… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#> 10 Adalet ve S… 110      Suç Türü ve Uyruğuna Gö… 2020-11-02 http://data.tuik.gov.tr/Bu…
-#> # … with 44 more rows
+#> # A tibble: 52 × 5
+#>    theme_name      theme_id data_name                    data_date  datafile_url
+#>    <chr>           <chr>    <chr>                        <date>     <chr>       
+#>  1 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  2 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  3 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  4 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  5 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  6 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  7 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  8 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#>  9 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#> 10 Adalet ve Seçim 110      "İstatistiksel Tablolar\n  … 2021-11-02 http://data…
+#> # ℹ 42 more rows
 
 # sdb <- statistical_databases("aaa")
 #> Error in check_theme_id(theme) : 
@@ -85,127 +85,117 @@ library(tuik)
 #> Error in check_theme_id(theme) : You can select only one theme!
 
 (sdb <- statistical_databases(110))
-#> # A tibble: 6 x 4
-#>   theme_name    theme_id db_name                            db_url                      
-#>   <chr>         <chr>    <chr>                              <chr>                       
-#> 1 Adalet ve Se… 110      "Milletvekili Seçim Sonuçları "    http://biruni.tuik.gov.tr/s…
-#> 2 Adalet ve Se… 110      "Mahalli İdareler Seçim Sonuçları… http://biruni.tuik.gov.tr/s…
-#> 3 Adalet ve Se… 110      "Cumhurbaşkanlığı Seçimi / Halk O… http://biruni.tuik.gov.tr/s…
-#> 4 Adalet ve Se… 110      "Ceza İnfaz Kurumuna Giren Hüküml… http://biruni.tuik.gov.tr/g…
-#> 5 Adalet ve Se… 110      "Güvenlik Birimine Gelen veya Get… http://biruni.tuik.gov.tr/m…
-#> 6 Adalet ve Se… 110      "Ceza İnfaz Kurumundan Çıkan (Tah… http://biruni.tuik.gov.tr/c…
+#> # A tibble: 6 × 4
+#>   theme_name      theme_id db_name                                        db_url
+#>   <chr>           <chr>    <chr>                                          <chr> 
+#> 1 Adalet ve Seçim 110      "Milletvekili Seçim Sonuçları "                http:…
+#> 2 Adalet ve Seçim 110      "Mahalli İdareler Seçim Sonuçları "            http:…
+#> 3 Adalet ve Seçim 110      "Cumhurbaşkanlığı Seçimi / Halk Oylaması Sonu… http:…
+#> 4 Adalet ve Seçim 110      "Ceza İnfaz Kurumuna Giren Hükümlü İstatistik… http:…
+#> 5 Adalet ve Seçim 110      "Güvenlik Birimine Gelen veya Getirilen Çocuk… http:…
+#> 6 Adalet ve Seçim 110      "Ceza İnfaz Kurumundan Çıkan Hükümlü İstatist… http:…
+```
 
+**If you are having problems at this stage, please see this issue on
+[GitHub](https://github.com/emraher/tuik/issues/2).**
+
+``` r
 # -------------------------------------------------------------------------- ###
 # Saving Data Files----
 # -------------------------------------------------------------------------- ###
-# Read xls files directly into R
+# Read xls files into R
 # NOTE: TUIK xls files are messy!!!
-(dt <- tibble::as_tibble(gdata::read.xls(stab$datafile_url[1])))
-#> # A tibble: 433 x 256
-#>    Suç.türü.ve.suç… X     X.1   X.2     X.3 X.4   X.5   X.6   X.7   X.8   X.9   X.10 
-#>    <chr>            <chr> <chr> <chr> <int> <lgl> <chr> <chr> <chr> <chr> <chr> <chr>
-#>  1 "Convicts recei… ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
-#>  2 ""               "Yaş… ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
-#>  3 ""               "Top… ""    ""       NA NA    "12 … ""    "15 … ""    "18 … ""   
-#>  4 ""               "Top… "Erk… "Kad…    NA NA    "Erk… "Kad… "Erk… "Kad… "Erk… "Kad…
-#>  5 "Su\xe7 t\xfcr\… "Tot… "Mal… "Fem…    NA NA    "Mal… "Fem… "Mal… "Fem… "Mal… "Fem…
-#>  6 "2019"           ""    ""    ""       NA NA    ""    ""    ""    ""    ""    ""   
-#>  7 "Toplam - Total" "281… "270… "11 …    NA NA    "1 9… "71"  "10 … "300" "69 … "2 7…
-#>  8 "\xd6ld\xfcrme … "9 5… "9 3… "235"    NA NA    "62"  "4"   "608" "11"  "2 6… "75" 
-#>  9 "Yaralama - Ass… "34 … "33 … "953"    NA NA    "46"  "2"   "413" "2"   "7 9… "184"
-#> 10 "Cinsel su\xe7l… "5 8… "5 7… "42"     NA NA    "245" "-"   "624" "6"   "1 3… "3"  
-#> # … with 423 more rows, and 244 more variables: X.11 <chr>, X.12 <chr>, X.13 <chr>,
-#> #   X.14 <chr>, X.15 <chr>, X.16 <chr>, X.17 <chr>, X.18 <chr>, X.19 <chr>, X.20 <chr>,
-#> #   X.21 <chr>, X.22 <chr>, X.23 <chr>, X.24 <lgl>, X.25 <lgl>, X.26 <lgl>, X.27 <lgl>,
-#> #   X.28 <lgl>, X.29 <lgl>, X.30 <lgl>, X.31 <lgl>, X.32 <lgl>, X.33 <lgl>, X.34 <lgl>,
-#> #   X.35 <lgl>, X.36 <lgl>, X.37 <lgl>, X.38 <lgl>, X.39 <lgl>, X.40 <lgl>, X.41 <lgl>,
-#> #   X.42 <lgl>, X.43 <lgl>, X.44 <lgl>, X.45 <lgl>, X.46 <lgl>, X.47 <lgl>, X.48 <lgl>,
-#> #   X.49 <lgl>, X.50 <lgl>, X.51 <lgl>, X.52 <lgl>, X.53 <lgl>, X.54 <lgl>, X.55 <lgl>,
-#> #   X.56 <lgl>, X.57 <lgl>, X.58 <lgl>, X.59 <lgl>, X.60 <lgl>, X.61 <lgl>, X.62 <lgl>,
-#> #   X.63 <lgl>, X.64 <lgl>, X.65 <lgl>, X.66 <lgl>, X.67 <lgl>, X.68 <lgl>, X.69 <lgl>,
-#> #   X.70 <lgl>, X.71 <lgl>, X.72 <lgl>, X.73 <lgl>, X.74 <lgl>, X.75 <lgl>, X.76 <lgl>,
-#> #   X.77 <lgl>, X.78 <lgl>, X.79 <lgl>, X.80 <lgl>, X.81 <lgl>, X.82 <lgl>, X.83 <lgl>,
-#> #   X.84 <lgl>, X.85 <lgl>, X.86 <lgl>, X.87 <lgl>, X.88 <lgl>, X.89 <lgl>, X.90 <lgl>,
-#> #   X.91 <lgl>, X.92 <lgl>, X.93 <lgl>, X.94 <lgl>, X.95 <lgl>, X.96 <lgl>, X.97 <lgl>,
-#> #   X.98 <lgl>, X.99 <lgl>, X.100 <lgl>, X.101 <lgl>, X.102 <lgl>, X.103 <lgl>,
-#> #   X.104 <lgl>, X.105 <lgl>, X.106 <lgl>, X.107 <lgl>, X.108 <lgl>, X.109 <lgl>,
-#> #   X.110 <lgl>, …
+download.file(stab$datafile_url[1], destfile = "/tmp/file.xls")
+(dt <- tibble::as_tibble(readxl::read_xls("/tmp/file.xls")))
+#> # A tibble: 17 × 4
+#>    `Hükümlü ve tutuklu sayısı, 2011-2020`                ...2        ...3  ...4 
+#>    <chr>                                                 <chr>       <chr> <chr>
+#>  1 "Prison population, 2011-2020"                         <NA>        <NA>  <NA>
+#>  2 "Yıllar\nYears"                                       "Toplam\nT… "Erk… "Kad…
+#>  3  <NA>                                                  <NA>        <NA>  <NA>
+#>  4 "2011"                                                "128253"    "123… "460…
+#>  5 "2012"                                                "136638"    "131… "490…
+#>  6 "2013"                                                "144098"    "138… "519…
+#>  7 "2014"                                                "158690"    "152… "578…
+#>  8 "2015"                                                "177262"    "170… "650…
+#>  9 "2016"                                                "200727"    "192… "837…
+#> 10 "2017"                                                "232340"    "222… "989…
+#> 11 "2018"                                                "264842"    "254… "104…
+#> 12 "2019"                                                "291546"    "280… "114…
+#> 13 "2020"                                                "266831"    "256… "106…
+#> 14 "Kaynak: Ceza İnfaz Kurumu İstatistikleri, 2011-2020"  <NA>        <NA>  <NA>
+#> 15 "Source: Prison Statistics, 2011-2020"                 <NA>        <NA>  <NA>
+#> 16 "Bilgiler 31 Aralık tarihine göredir."                 <NA>        <NA>  <NA>
+#> 17 "Data are given as at 31 December."                    <NA>        <NA>  <NA>
+
+
 
 # Download file from URL
 filename <- paste0(janitor::make_clean_names(stab$data_name[1]),
                    janitor::make_clean_names(stab$data_date[1]))
 
 download.file(stab$datafile_url[1],
-              destfile = paste0("~/Downloads/", filename, ".xls"),
+              destfile = paste0("/tmp/", filename, ".xls"),
               mode = "wb")
 
 
 # -------------------------------------------------------------------------- ###
-# All DB Links----
+# All DB Links---- NOT WORKING AT THIS TIME. TUIK CHANGED THE PAGE
 # -------------------------------------------------------------------------- ###
-all_dbs <- purrr::map_df(.x = st$theme_id, .f = ~statistical_databases(.x))
-
-all_dbs %>%
-  dplyr::count(theme_name, name = "database_count")
-#> # A tibble: 16 x 2
-#>    theme_name                         database_count
-#>    <chr>                                       <int>
-#>  1 Adalet ve Seçim                                 6
-#>  2 Bilim, Teknoloji ve Bilgi Toplumu               1
-#>  3 Çevre ve Enerji                                 5
-#>  4 Dış Ticaret                                     4
-#>  5 Eğitim, Kültür, Spor ve Turizm                  7
-#>  6 Ekonomik Güven                                  4
-#>  7 Enflasyon ve Fiyat                              5
-#>  8 Gelir, Yaşam, Tüketim ve Yoksulluk              3
-#>  9 İnşaat ve Konut                                 8
-#> 10 İstihdam, İşsizlik ve Ücret                     9
-#> 11 Nüfus ve Demografi                             21
-#> 12 Sanayi                                          9
-#> 13 Tarım                                           9
-#> 14 Ticaret ve Hizmet                               3
-#> 15 Ulaştırma ve Haberleşme                         1
-#> 16 Ulusal Hesaplar                                 3
+# all_dbs <- purrr::map_df(.x = st$theme_id, .f = ~statistical_databases(.x))
+# 
+# all_dbs %>%
+#   dplyr::count(theme_name, name = "database_count")
 
 # -------------------------------------------------------------------------- ###
 # Download Geo Data----
 # -------------------------------------------------------------------------- ###
 # Download Variable Names and Codes
 (dt <- geo_data())
-#> # A tibble: 49 x 2
-#>    variable_name                                    variable_no           
-#>    <chr>                                            <chr>                 
-#>  1 Atık Hizmeti Verilen Nüfus Oranı (%)             CVRBA-GK1697126-O40505
-#>  2 Atıksu Arıtma Hizmeti Verilen Nüfus Oranı (%)    CVRAS-GK179211-O40717 
-#>  3 Kişi Başı Günlük Atıksu Miktarı (L/Kişi-Gün)     CVRAS-GK179213-O40718 
-#>  4 Kanalizasyon Hizmeti Verilen Nüfus Oranı (%)     CVRAS-GK179060-O40709 
-#>  5 İçme Suyu Şebekesi Bulunan Nüfus Oranı (%)       CVRBS-GK1697172-O40909
-#>  6 İçme Suyu Arıtma Hizmeti Verilen Nüfus Oranı (%) CVRBS-GK1697194-O40921
-#>  7 Kişi Başına Elektrik Tüketimi (kWh)              ENR-GK054-O0015       
-#>  8 Okuma Yazma Bilmeyen Sayısı                      ULE-GK160887-O29502   
-#>  9 Sinema Salon Sayısı                              SNM-GK160947-O33301   
-#> 10 Sinema Film Sayısı                               SNM-GK160951-O33303   
-#> # … with 39 more rows
+#> # A tibble: 76 × 6
+#>    var_name               var_num var_levels var_period var_source var_recordnum
+#>    <chr>                  <chr>   <list>     <chr>      <chr>              <dbl>
+#>  1 Atık hizmeti verilen … CVRBA-… <dbl [2]>  yillik     medas                  5
+#>  2 Atıksu Arıtma Hizmeti… CVRAS-… <dbl [2]>  yillik     medas                  5
+#>  3 Kişi Başı Günlük Atık… CVRAS-… <dbl [2]>  yillik     medas                  5
+#>  4 Kanalizasyon Hizmeti … CVRAS-… <dbl [2]>  yillik     medas                  5
+#>  5 İçme Suyu Şebekesi Bu… CVRBS-… <dbl [2]>  yillik     medas                  5
+#>  6 İçme Suyu Arıtma Hizm… CVRBS-… <dbl [2]>  yillik     medas                  5
+#>  7 Kişi Başına Elektrik … ENR-GK… <dbl [1]>  yillik     ilGosterg…             5
+#>  8 Okuma Yazma Bilmeyen … ULE-GK… <dbl [3]>  yillik     medas                  5
+#>  9 Sinema Salon Sayısı    SNM-GK… <dbl [2]>  yillik     medas                  5
+#> 10 Sinema Film Sayısı     SNM-GK… <dbl [2]>  yillik     medas                  5
+#> # ℹ 66 more rows
 
-# dt <- geo_data(5)
-#> Error in geo_data(5) : There's no IBBS at this level!
+
 
 # Download data for a given level and variable
-(dt <- geo_data(2, "SNM-GK160951-O33303"))
-#> # A tibble: 130 x 3
+dt |> 
+  filter(var_num == "SNM-GK160951-O33303")
+#> # A tibble: 1 × 6
+#>   var_name           var_num      var_levels var_period var_source var_recordnum
+#>   <chr>              <chr>        <list>     <chr>      <chr>              <dbl>
+#> 1 Sinema Film Sayısı SNM-GK16095… <dbl [2]>  yillik     medas                  5
+
+(dt_x <- geo_data(variable_level = 3, 
+                  variable_no = "SNM-GK160951-O33303", 
+                  variable_source = "medas", 
+                  variable_period = "yillik", 
+                  variable_recnum = 5))
+#> # A tibble: 405 × 3
 #>    code  date  sinema_film_sayisi
-#>    <chr> <chr>              <dbl>
-#>  1 TR83  2019                1838
-#>  2 TR83  2018                1568
-#>  3 TR83  2017                1577
-#>  4 TR83  2016                1284
-#>  5 TR83  2015                1656
-#>  6 TR72  2019                1647
-#>  7 TR72  2018                1561
-#>  8 TR72  2017                1318
-#>  9 TR72  2016                 962
-#> 10 TR72  2015                1035
-#> # … with 120 more rows
+#>    <chr> <chr> <chr>             
+#>  1 39    2022  278               
+#>  2 39    2021  144               
+#>  3 39    2020  112               
+#>  4 39    2019  368               
+#>  5 39    2018  384               
+#>  6 68    2022  128               
+#>  7 68    2021  83                
+#>  8 68    2020  53                
+#>  9 68    2019  134               
+#> 10 68    2018  86                
+#> # ℹ 395 more rows
 
 # (dt <- geo_data(4, "TFE-GK105747-O23001"))
 #> Error in value[[3L]](cond) : 
@@ -216,45 +206,45 @@ all_dbs %>%
 # -------------------------------------------------------------------------- ###
 (dt_sf <- geo_map(9))
 #> Simple feature collection with 1003 features and 4 fields
-#> geometry type:  POINT
-#> dimension:      XY
-#> bbox:           xmin: 25.89 ymin: 35.9 xmax: 44.58 ymax: 42.02
-#> geographic CRS: WGS 84
-#> # A tibble: 1,003 x 5
-#>    ad            tp    bs    bm      geometry
-#>    <chr>      <int> <int> <int>   <POINT [°]>
-#>  1 İSTANBUL       1     1     1 (29.01 41.62)
-#>  2 ANKARA         1     1     1 (32.85 39.94)
-#>  3 İZMİR          1     1     1 (27.15 38.41)
-#>  4 DİYARBAKIR     1     1     1 (40.21 37.92)
-#>  5 ESKİŞEHİR      1     1     0 (30.49 39.77)
-#>  6 ANTALYA        1     1     1  (30.7 36.91)
-#>  7 HATAY          1     1     1  (36.16 36.2)
-#>  8 MERSİN         1     1     0 (34.65 36.82)
-#>  9 KAYSERİ        1     1     1 (35.89 38.72)
-#> 10 MARDİN         1     1     0 (40.74 37.31)
-#> # … with 993 more rows
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 25.8861 ymin: 35.9023 xmax: 44.5762 ymax: 42.0245
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 1,003 × 5
+#>    ad            tp    bs    bm          geometry
+#>    <chr>      <int> <int> <int>       <POINT [°]>
+#>  1 İSTANBUL       1     1     1 (29.0107 41.6219)
+#>  2 ANKARA         1     1     1 (32.8478 39.9383)
+#>  3 İZMİR          1     1     1 (27.1529 38.4102)
+#>  4 DİYARBAKIR     1     1     1  (40.2125 37.924)
+#>  5 ESKİŞEHİR      1     1     0 (30.4944 39.7685)
+#>  6 ANTALYA        1     1     1 (30.6962 36.9071)
+#>  7 HATAY          1     1     1 (36.1588 36.1988)
+#>  8 MERSİN         1     1     0 (34.6544 36.8217)
+#>  9 KAYSERİ        1     1     1 (35.8886 38.7222)
+#> 10 MARDİN         1     1     0 (40.7377 37.3122)
+#> # ℹ 993 more rows
 
 (dt_sf <- geo_map(3))
-#> Simple feature collection with 81 features and 7 fields
-#> geometry type:  MULTIPOLYGON
-#> dimension:      XY
-#> bbox:           xmin: 25.66 ymin: 35.86 xmax: 44.81 ymax: 42.1
-#> geographic CRS: WGS 84
-#> # A tibble: 81 x 8
-#>     code LEVEL1_COD LEVEL2_COD LEVEL3_COD LEV1_NAME LEV2_NAME NAME 
-#>    <int> <chr>      <chr>      <chr>      <chr>     <chr>     <chr>
-#>  1     1 TR6        TR62       TR621      Akdeniz   Adana     ADANA
-#>  2     2 TRC        TRC1       TRC12      Guneydog… Gaziantep ADIY…
-#>  3     3 TR3        TR33       TR332      Ege       Manisa    AFYO…
-#>  4     7 TR6        TR61       TR611      Akdeniz   Antalya   ANTA…
-#>  5     9 TR3        TR32       TR321      Ege       Aydin     AYDIN
-#>  6    20 TR3        TR32       TR322      Ege       Aydin     DENI…
-#>  7    37 TR8        TR82       TR821      Bati Kar… Kastamonu KAST…
-#>  8    10 TR2        TR22       TR221      Bati Mar… Balikesir BALI…
-#>  9    32 TR6        TR61       TR612      Akdeniz   Antalya   ISPA…
-#> 10    35 TR3        TR31       TR310      Ege       Izmir     IZMIR
-#> # … with 71 more rows, and 1 more variable: geometry <MULTIPOLYGON [°]>
+#> Simple feature collection with 81 features and 5 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: 25.66 ymin: 35.81 xmax: 44.81 ymax: 42.1
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 81 × 6
+#>    code  bolgeKodu nutsKodu name           ad                           geometry
+#>  * <chr> <chr>     <chr>    <chr>          <chr>              <MULTIPOLYGON [°]>
+#>  1 9     TR32      TR321    AYDIN          AYDIN       (((28.2497 37.5499, 28.2…
+#>  2 1     TR62      TR621    ADANA          ADANA       (((36.18 37.7096, 36.189…
+#>  3 2     TRC1      TRC12    ADIYAMAN       ADIYAMAN    (((38.9199 37.8197, 38.9…
+#>  4 3     TR33      TR332    AFYONKARAHİSAR AFYONKARAH… (((30.6098 38.2199, 30.5…
+#>  5 7     TR61      TR611    ANTALYA        ANTALYA     (((32.1898 36.9604, 32.2…
+#>  6 20    TR32      TR322    DENİZLİ        DENİZLİ     (((28.76 37.2496, 28.729…
+#>  7 37    TR82      TR821    KASTAMONU      KASTAMONU   (((33.7802 41.0398, 33.7…
+#>  8 10    TR22      TR221    BALIKESİR      BALIKESİR   (((26.9896 39.2999, 26.9…
+#>  9 32    TR61      TR612    ISPARTA        ISPARTA     (((31.3504 37.5899, 31.3…
+#> 10 35    TR31      TR310    İZMİR          İZMİR       (((27.6001 38.4797, 27.6…
+#> # ℹ 71 more rows
 ```
 
 ## Map Examples
@@ -262,8 +252,21 @@ all_dbs %>%
 ### NUTS-2
 
 ``` r
-chicken <- geo_data(2, "HYV-GK1696800-O32507") %>% 
-  dplyr::filter(date %in% c("2015", "2019"))
+dt |> 
+  filter(var_num == "HYV-GK1696800-O32507")
+#> # A tibble: 1 × 6
+#>   var_name                var_num var_levels var_period var_source var_recordnum
+#>   <chr>                   <chr>   <list>     <chr>      <chr>              <dbl>
+#> 1 Yumurta Tavuğu Sayısı … HYV-GK… <dbl [3]>  yillik     medas                  5
+
+chicken <- geo_data(variable_level = 2, 
+                    variable_no = "HYV-GK1696800-O32507", 
+                    variable_source = "medas", 
+                    variable_period = "yillik", 
+                    variable_recnum = 20) %>% 
+  dplyr::filter(date %in% c("2023", "2015")) |> 
+  mutate(yumurta_tavugu_sayisi_adet = as.numeric(yumurta_tavugu_sayisi_adet),
+         date = as.numeric(date))
 
 geo_map(2) %>% 
   left_join(chicken) %>% 
@@ -279,20 +282,31 @@ geo_map(2) %>%
   facet_wrap(~date, ncol = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ### NUTS-3
 
 ``` r
-house <- geo_data(3, "INS-GK055-O006") %>% 
-  filter(date == 2019) %>% 
-  mutate(code = as.numeric(code))
+dt |> 
+  filter(var_num == "INS-GK055-O006")
+#> # A tibble: 1 × 6
+#>   var_name                var_num var_levels var_period var_source var_recordnum
+#>   <chr>                   <chr>   <list>     <chr>      <chr>              <dbl>
+#> 1 Konut satış sayıları (… INS-GK… <dbl [1]>  yillik     ilGosterg…             5
+
+house <- geo_data(variable_level = 3, 
+                  variable_no = "INS-GK055-O006", 
+                  variable_source = "ilGostergeleri", 
+                  variable_period = "yillik", 
+                  variable_recnum = 5) %>% 
+  filter(date == 2019)
 
 # Let's select different colors
 pal <- wesanderson::wes_palette("BottleRocket2", 50, type = "continuous")
 
 geo_map(3) %>% 
   left_join(house) %>% 
+  mutate(konut_satis_sayilari_toplam = as.numeric(konut_satis_sayilari_toplam)) %>%
   ggplot() +
   geom_sf(aes(fill = konut_satis_sayilari_toplam)) +
   coord_sf(datum = NA) + 
@@ -306,17 +320,28 @@ geo_map(3) %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ### LAU-1
 
 ``` r
+dt |> 
+  filter(var_num == "ULE-GK160887-O29502")
+#> # A tibble: 1 × 6
+#>   var_name                var_num var_levels var_period var_source var_recordnum
+#>   <chr>                   <chr>   <list>     <chr>      <chr>              <dbl>
+#> 1 Okuma Yazma Bilmeyen S… ULE-GK… <dbl [3]>  yillik     medas                  5
+
 pal <- c("#f7f7f7", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252", "#252525")
 
-geo_data(4, "ULE-GK160887-O29502") %>% 
-  filter(date == 2019) %>% 
-  mutate(code = as.numeric(code)) %>% 
+geo_data(variable_level = 4, 
+         variable_no = "ULE-GK160887-O29502", 
+         variable_source = "medas", 
+         variable_period = "yillik", 
+         variable_recnum = 5) %>% 
+  filter(date == 2022) %>% 
   left_join(geo_map(level = 4), .) %>% 
+  mutate(okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi)) |> 
   ggplot() +
   geom_sf(aes(fill = okuma_yazma_bilmeyen_sayisi), lwd = 0.1) +
   coord_sf(datum = NA) + 
@@ -330,22 +355,26 @@ geo_data(4, "ULE-GK160887-O29502") %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
-geo_data(4, "ADNKS-GK137473-O29001") %>% 
+geo_data(variable_level = 4, 
+         variable_no = "ADNKS-GK137473-O29001", 
+         variable_source = "medas", 
+         variable_period = "yillik", 
+         variable_recnum = 5) |> 
   filter(date == 2019) %>% 
-  mutate(code = as.numeric(code)) %>% 
   left_join(geo_map(level = 4), .) %>% 
-  filter(iladi == "ANKARA") %>% 
+  mutate(toplam_nufus = as.numeric(toplam_nufus)) |>
+  filter(bolgeKodu == "TR51") %>% 
   ggplot() +
-  geom_sf(aes(fill = toplam_nufus_kisi)) +
+  geom_sf(aes(fill = toplam_nufus)) +
   scale_fill_viridis_c(option = "E") +
   labs(fill = "Population in 2019") +
   hrbrthemes::theme_ipsum_rc()
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ### Hex and Dorling
 
@@ -362,10 +391,21 @@ library(tuik)
 # Read map data and transform CRS
 tur_hex_map <- st_transform(geo_map(level = 3), crs = 3395)
 
+dt |> 
+  filter(var_num == "ULS-GK093-O009")
+#> # A tibble: 1 × 6
+#>   var_name                var_num var_levels var_period var_source var_recordnum
+#>   <chr>                   <chr>   <list>     <chr>      <chr>              <dbl>
+#> 1 Bin kişi başına otomob… ULS-GK… <dbl [1]>  yillik     ilGosterg…             5
+
+
 # Read data and merge
-tur_hex_dt <- geo_data(3, "ULS-GK093-O009") %>% 
+tur_hex_dt <- geo_data(variable_level = 3, 
+                       variable_no = "ULS-GK093-O009", 
+                       variable_source = "ilGostergeleri", 
+                       variable_period = "yillik", 
+                       variable_recnum = 5) %>% 
   filter(date == 2019) %>% 
-  mutate(code = as.numeric(code)) %>% 
   left_join(tur_hex_map, .)
 
 # Choose one seed according to these plots
@@ -376,20 +416,22 @@ for (i in 1:16) {
 }
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ``` r
+
 # Create hex map
 new_hex <- calculate_grid(shape = tur_hex_dt, grid_type = "hexagonal", seed = 9)
 result_hex <- assign_polygons(tur_hex_dt, new_hex)
 
 # Plot
 result_hex %>% 
-  mutate(NAME = stringr::str_replace(NAME, "AFYONKARAHISAR", "AFYON")) %>% 
-  mutate(NAME = stringr::str_replace(NAME, "KAHRAMANMARAŞ", "K.MARAŞ")) %>% 
+  mutate(name = stringr::str_replace(name, "AFYONKARAHİSAR", "AFYON")) %>% 
+  mutate(name = stringr::str_replace(name, "KAHRAMANMARAŞ", "K.MARAŞ")) %>% 
+  mutate(bin_kisi_basina_otomobil_sayisi = as.numeric(bin_kisi_basina_otomobil_sayisi)) |> 
   ggplot() +
   geom_sf(aes(fill = bin_kisi_basina_otomobil_sayisi), lwd = 0.1) +
-  geom_sf_text(aes(label = NAME), color = "black", size = 2) +
+  geom_sf_text(aes(label = name), color = "black", size = 2) +
   coord_sf(datum = NA) + 
   rcartocolor::scale_fill_carto_c(palette = "OrYel") +
   hrbrthemes::theme_ipsum_rc() +
@@ -403,7 +445,7 @@ result_hex %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-2.png" width="100%" />
 
 ``` r
 # -------------------------------------------------------------------------- ###
@@ -413,14 +455,23 @@ result_hex %>%
 tur_map <- st_transform(geo_map(level = 4), crs = 3395)
 
 # Read data and merge
-tur_pop <- geo_data(4, "ADNKS-GK137473-O29001")
-tur_ill <- geo_data(4, "ULE-GK160887-O29502")
+tur_pop <- geo_data(variable_level = 4, 
+                    variable_no = "ADNKS-GK137473-O29001", 
+                    variable_source = "medas", 
+                    variable_period = "yillik", 
+                    variable_recnum = 5)
+tur_ill <- geo_data(variable_level = 4, 
+                    variable_no = "ULE-GK160887-O29502", 
+                    variable_source = "medas", 
+                    variable_period = "yillik", 
+                    variable_recnum = 5)
 
 tur_dt <- left_join(tur_pop, tur_ill) %>% 
   filter(date == 2019) %>% 
-  mutate(code = as.numeric(code)) %>% 
   left_join(tur_map, .) %>% 
-  mutate(value = 100*(okuma_yazma_bilmeyen_sayisi/toplam_nufus_kisi))
+  mutate(okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi),
+         toplam_nufus = as.numeric(toplam_nufus)) |> 
+  mutate(value = 100*(okuma_yazma_bilmeyen_sayisi/toplam_nufus))
 
 # Create dorling maps
 tur_dorling1 <- cartogram_dorling(tur_dt, "okuma_yazma_bilmeyen_sayisi", 0.4)
@@ -439,14 +490,14 @@ tur_dorling1 %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 ``` r
-tur_dorling2 <- cartogram_dorling(tur_dt, "toplam_nufus_kisi", 0.4)
+tur_dorling2 <- cartogram_dorling(tur_dt, "toplam_nufus", 0.4)
 
 tur_dorling2 %>% 
   ggplot() +
-  geom_sf(aes(fill = toplam_nufus_kisi), lwd = 0.1) +
+  geom_sf(aes(fill = toplam_nufus), lwd = 0.1) +
   coord_sf(datum = NA) + 
   scale_fill_viridis_c(option = "B") +
   theme_bw() +
@@ -458,7 +509,7 @@ tur_dorling2 %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
 ``` r
 tur_dorling3 <- cartogram_dorling(tur_dt, "value", 0.4)
@@ -477,4 +528,4 @@ tur_dorling3 %>%
        caption = "Kaynak: TÜİK")
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />

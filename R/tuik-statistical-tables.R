@@ -27,10 +27,11 @@ statistical_tables <- function(theme) {
   table_names <- doc %>%
     rvest::html_table() %>%
     `[[`(1) %>%
-    dplyr::select(-.data$X3, -.data$X4) %>%
-    dplyr::filter(.data$X2 != "") %>%
-    dplyr::mutate(X1 = stringr::str_remove_all(.data$X1, "\\u0130statistiksel TablolarYeni\r\n[ ]+")) %>%
-    dplyr::mutate(X1 = stringr::str_remove_all(.data$X1, "\\u0130statistiksel Tablolar\r\n[ ]+"))
+    dplyr::select(-X3, -X4) %>%
+    dplyr::filter(X2 != "") %>%
+    dplyr::mutate(X1 = stringr::str_remove_all(X1, "\\u0130statistiksel TablolarYeni\r\n[ ]+")) %>%
+    dplyr::mutate(X1 = stringr::str_remove_all(X1, "\\u0130statistiksel Tablolar\r\n[ ]+")) |>
+    dplyr::mutate(X1 = stringr::str_remove_all(X1, "İstatistiksel Tablolar\n[ ]+"))
 
   table_urls <- doc %>%
     rvest::html_nodes("a") %>%
@@ -42,21 +43,21 @@ statistical_tables <- function(theme) {
 
   table_urls <- tibble::tibble(table_urls, table_meta) %>%
     dplyr::filter(table_meta != "Tablo Metaverisi") %>%
-    dplyr::select(-.data$table_meta) %>%
+    dplyr::select(-table_meta) %>%
     dplyr::mutate(table_urls = paste0("http://data.tuik.gov.tr", table_urls))
 
   sthemes <- sthemes %>%
-    dplyr::filter(.data$theme_id %in% theme)
+    dplyr::filter(theme_id %in% theme)
 
   # Quick fix for locale
-  mylocale <- dplyr::if_else(Sys.info()["sysname"] == "Windows", "Turkish_Turkey.1254", "tr_TR")
+  mylocale <- dplyr::if_else(Sys.info()["sysname"] == "Windows", "Turkish_Turkey.utf8", "tr_TR")
 
 
   st <- tibble::tibble(table_names, table_urls) %>%
     purrr::set_names("data_name", "data_date", "datafile_url") %>%
-    dplyr::mutate(data_date = lubridate::dmy(.data$data_date, locale = mylocale)) %>%
+    dplyr::mutate(data_date = lubridate::dmy(data_date, locale = mylocale)) %>%
     dplyr::bind_cols(sthemes) %>%
-    dplyr::select(.data$theme_name, .data$theme_id, tidyselect::everything())
+    dplyr::select(theme_name, theme_id, tidyselect::everything())
 
 
   return(st)
