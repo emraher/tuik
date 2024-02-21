@@ -10,6 +10,12 @@
     <loc>/CONTRIBUTING.html</loc>
   </url>
   <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>/SUPPORT.html</loc>
   </url>
   <url>
@@ -19,6 +25,33 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/geo_data.html</loc>
+  </url>
+  <url>
+    <loc>/reference/geo_map.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/make_request.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>/reference/statistical_databases.html</loc>
+  </url>
+  <url>
+    <loc>/reference/statistical_tables.html</loc>
+  </url>
+  <url>
+    <loc>/reference/statistical_themes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidyeval.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tuik-package.html</loc>
   </url>
 </urlset>

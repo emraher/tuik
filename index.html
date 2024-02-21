@@ -83,7 +83,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emraher/tuik" class="external-link">tuik</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu">statistical_themes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/statistical_themes.html">statistical_themes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 17 × 2</span></span>
 <span><span class="co">#&gt;    theme_name                         theme_id</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;   </span></span>
@@ -106,13 +106,13 @@
 <span><span class="co">#&gt; 17 Ulusal Hesaplar                    113</span></span>
 <span></span>
 <span><span class="co"># stab &lt;- statistical_tables("aaa")</span></span>
-<span><span class="co">#&gt; Error in check_theme_id(theme) : </span></span>
+<span><span class="co">#&gt; Error in check_theme_id(theme) :</span></span>
 <span><span class="co">#&gt;  You should select a valid theme ID!</span></span>
 <span></span>
 <span><span class="co"># stab &lt;- statistical_tables(c(123, 143))</span></span>
 <span><span class="co">#&gt; Error in check_theme_id(theme) : You can select only one theme!</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">stab</span> <span class="op">&lt;-</span> <span class="fu">statistical_tables</span><span class="op">(</span><span class="st">"110"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">stab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/statistical_tables.html">statistical_tables</a></span><span class="op">(</span><span class="st">"110"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 52 × 5</span></span>
 <span><span class="co">#&gt;    theme_name      theme_id data_name                    data_date  datafile_url</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;                        &lt;date&gt;     &lt;chr&gt;       </span></span>
@@ -129,13 +129,13 @@
 <span><span class="co">#&gt; # ℹ 42 more rows</span></span>
 <span></span>
 <span><span class="co"># sdb &lt;- statistical_databases("aaa")</span></span>
-<span><span class="co">#&gt; Error in check_theme_id(theme) : </span></span>
+<span><span class="co">#&gt; Error in check_theme_id(theme) :</span></span>
 <span><span class="co">#&gt;  You should select a valid theme ID!</span></span>
 <span></span>
 <span><span class="co"># sdb &lt;- statistical_databases(c(123, 143))</span></span>
 <span><span class="co">#&gt; Error in check_theme_id(theme) : You can select only one theme!</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">sdb</span> <span class="op">&lt;-</span> <span class="fu">statistical_databases</span><span class="op">(</span><span class="fl">110</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">sdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/statistical_databases.html">statistical_databases</a></span><span class="op">(</span><span class="fl">110</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
 <span><span class="co">#&gt;   theme_name      theme_id db_name                                        db_url</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;                                          &lt;chr&gt; </span></span>
@@ -178,19 +178,22 @@
 <span></span>
 <span></span>
 <span><span class="co"># Download file from URL</span></span>
-<span><span class="va">filename</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/make_clean_names.html" class="external-link">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                   <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/make_clean_names.html" class="external-link">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">filename</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/make_clean_names.html" class="external-link">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/make_clean_names.html" class="external-link">make_clean_names</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">data_date</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">stab</span><span class="op">$</span><span class="va">datafile_url</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>              destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"/tmp/"</span>, <span class="va">filename</span>, <span class="st">".xls"</span><span class="op">)</span>,</span>
-<span>              mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
+<span>  destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"/tmp/"</span>, <span class="va">filename</span>, <span class="st">".xls"</span><span class="op">)</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"wb"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># All DB Links---- NOT WORKING AT THIS TIME. TUIK CHANGED THE PAGE</span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># all_dbs &lt;- purrr::map_df(.x = st$theme_id, .f = ~statistical_databases(.x))</span></span>
-<span><span class="co"># </span></span>
+<span><span class="co">#</span></span>
 <span><span class="co"># all_dbs %&gt;%</span></span>
 <span><span class="co">#   dplyr::count(theme_name, name = "database_count")</span></span>
 <span></span>
@@ -198,7 +201,7 @@
 <span><span class="co"># Download Geo Data----</span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># Download Variable Names and Codes</span></span>
-<span><span class="op">(</span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 76 × 6</span></span>
 <span><span class="co">#&gt;    var_name               var_num var_levels var_period var_source var_recordnum</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;                  &lt;chr&gt;   &lt;list&gt;     &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;</span></span>
@@ -217,18 +220,20 @@
 <span></span>
 <span></span>
 <span><span class="co"># Download data for a given level and variable</span></span>
-<span><span class="va">dt</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">dt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">var_num</span> <span class="op">==</span> <span class="st">"SNM-GK160951-O33303"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span><span class="co">#&gt;   var_name           var_num      var_levels var_period var_source var_recordnum</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;        &lt;list&gt;     &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 Sinema Film Sayısı SNM-GK16095… &lt;dbl [2]&gt;  yillik     medas                  5</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">dt_x</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">3</span>, </span>
-<span>                  variable_no <span class="op">=</span> <span class="st">"SNM-GK160951-O33303"</span>, </span>
-<span>                  variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>                  variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                  variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">dt_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"SNM-GK160951-O33303"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 405 × 3</span></span>
 <span><span class="co">#&gt;    code  date  sinema_film_sayisi</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;             </span></span>
@@ -245,13 +250,13 @@
 <span><span class="co">#&gt; # ℹ 395 more rows</span></span>
 <span></span>
 <span><span class="co"># (dt &lt;- geo_data(4, "TFE-GK105747-O23001"))</span></span>
-<span><span class="co">#&gt; Error in value[[3L]](cond) : </span></span>
+<span><span class="co">#&gt; Error in value[[3L]](cond) :</span></span>
 <span><span class="co">#&gt;  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!</span></span>
 <span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># Download Geo Map----</span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
-<span><span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu">geo_map</span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 1003 features and 4 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
@@ -272,7 +277,7 @@
 <span><span class="co">#&gt; 10 MARDİN         1     1     0 (40.7377 37.3122)</span></span>
 <span><span class="co">#&gt; # ℹ 993 more rows</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu">geo_map</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">dt_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 81 features and 5 fields</span></span>
 <span><span class="co">#&gt; Geometry type: MULTIPOLYGON</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
@@ -300,33 +305,39 @@
 <h3 id="nuts-2">NUTS-2<a class="anchor" aria-label="anchor" href="#nuts-2"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">var_num</span> <span class="op">==</span> <span class="st">"HYV-GK1696800-O32507"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span><span class="co">#&gt;   var_name                var_num var_levels var_period var_source var_recordnum</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;   &lt;list&gt;     &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 Yumurta Tavuğu Sayısı … HYV-GK… &lt;dbl [3]&gt;  yillik     medas                  5</span></span>
 <span></span>
-<span><span class="va">chicken</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>                    variable_no <span class="op">=</span> <span class="st">"HYV-GK1696800-O32507"</span>, </span>
-<span>                    variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>                    variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                    variable_recnum <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2023"</span>, <span class="st">"2015"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>yumurta_tavugu_sayisi_adet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">yumurta_tavugu_sayisi_adet</span><span class="op">)</span>,</span>
-<span>         date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">chicken</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"HYV-GK1696800-O32507"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2023"</span>, <span class="st">"2015"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    yumurta_tavugu_sayisi_adet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">yumurta_tavugu_sayisi_adet</span><span class="op">)</span>,</span>
+<span>    date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="fu">geo_map</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">chicken</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">chicken</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">yumurta_tavugu_sayisi_adet</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">rcartocolor</span><span class="fu">::</span><span class="fu">scale_fill_carto_c</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Safe"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">hrbrthemes</span><span class="fu">::</span><span class="fu">theme_ipsum_rc</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"Yumurta Tavuğu (Adet)"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Yumurta Tavuğu (Adet)"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">date</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 </div>
@@ -334,44 +345,50 @@
 <h3 id="nuts-3">NUTS-3<a class="anchor" aria-label="anchor" href="#nuts-3"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">var_num</span> <span class="op">==</span> <span class="st">"INS-GK055-O006"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span><span class="co">#&gt;   var_name                var_num var_levels var_period var_source var_recordnum</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;                   &lt;chr&gt;   &lt;list&gt;     &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 Konut satış sayıları (… INS-GK… &lt;dbl [1]&gt;  yillik     ilGosterg…             5</span></span>
 <span></span>
-<span><span class="va">house</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">3</span>, </span>
-<span>                  variable_no <span class="op">=</span> <span class="st">"INS-GK055-O006"</span>, </span>
-<span>                  variable_source <span class="op">=</span> <span class="st">"ilGostergeleri"</span>, </span>
-<span>                  variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                  variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">house</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"INS-GK055-O006"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"ilGostergeleri"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Let's select different colors</span></span>
 <span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu">wesanderson</span><span class="fu">::</span><span class="fu">wes_palette</span><span class="op">(</span><span class="st">"BottleRocket2"</span>, <span class="fl">50</span>, type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">geo_map</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">house</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>konut_satis_sayilari_toplam <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">konut_satis_sayilari_toplam</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">house</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>konut_satis_sayilari_toplam <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">konut_satis_sayilari_toplam</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">konut_satis_sayilari_toplam</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu">scale_fill_gradientn</span><span class="op">(</span>colours <span class="op">=</span> <span class="va">pal</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_gradientn</span><span class="op">(</span>colours <span class="op">=</span> <span class="va">pal</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">hrbrthemes</span><span class="fu">::</span><span class="fu">theme_ipsum_rc</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Konut Satış Sayıları"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Konut Satış Sayıları"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="lau-1">LAU-1<a class="anchor" aria-label="anchor" href="#lau-1"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">var_num</span> <span class="op">==</span> <span class="st">"ULE-GK160887-O29502"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span><span class="co">#&gt;   var_name                var_num var_levels var_period var_source var_recordnum</span></span>
@@ -380,36 +397,44 @@
 <span></span>
 <span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f7f7f7"</span>, <span class="st">"#d9d9d9"</span>, <span class="st">"#bdbdbd"</span>, <span class="st">"#969696"</span>, <span class="st">"#737373"</span>, <span class="st">"#525252"</span>, <span class="st">"#252525"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>         variable_no <span class="op">=</span> <span class="st">"ULE-GK160887-O29502"</span>, </span>
-<span>         variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>         variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>         variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu">geo_map</span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>okuma_yazma_bilmeyen_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"ULE-GK160887-O29502"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2022</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>okuma_yazma_bilmeyen_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_gradientn</span><span class="op">(</span>colours <span class="op">=</span> <span class="va">pal</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısı"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısı"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>         variable_no <span class="op">=</span> <span class="st">"ADNKS-GK137473-O29001"</span>, </span>
-<span>         variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>         variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>         variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu">geo_map</span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"ADNKS-GK137473-O29001"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>toplam_nufus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">toplam_nufus</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bolgeKodu</span> <span class="op">==</span> <span class="st">"TR51"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bolgeKodu</span> <span class="op">==</span> <span class="st">"TR51"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">toplam_nufus</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -431,9 +456,9 @@
 <span><span class="co"># Hex----</span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># Read map data and transform CRS</span></span>
-<span><span class="va">tur_hex_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu">geo_map</span><span class="op">(</span>level <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">3395</span><span class="op">)</span></span>
+<span><span class="va">tur_hex_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">3395</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dt</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">dt</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">var_num</span> <span class="op">==</span> <span class="st">"ULS-GK093-O009"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span><span class="co">#&gt;   var_name                var_num var_levels var_period var_source var_recordnum</span></span>
@@ -442,12 +467,14 @@
 <span></span>
 <span></span>
 <span><span class="co"># Read data and merge</span></span>
-<span><span class="va">tur_hex_dt</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">3</span>, </span>
-<span>                       variable_no <span class="op">=</span> <span class="st">"ULS-GK093-O009"</span>, </span>
-<span>                       variable_source <span class="op">=</span> <span class="st">"ilGostergeleri"</span>, </span>
-<span>                       variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                       variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">tur_hex_dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"ULS-GK093-O009"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"ilGostergeleri"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">tur_hex_map</span>, <span class="va">.</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Choose one seed according to these plots</span></span>
@@ -464,98 +491,120 @@
 <span><span class="va">result_hex</span> <span class="op">&lt;-</span> <span class="fu">assign_polygons</span><span class="op">(</span><span class="va">tur_hex_dt</span>, <span class="va">new_hex</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot</span></span>
-<span><span class="va">result_hex</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>name <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"AFYONKARAHİSAR"</span>, <span class="st">"AFYON"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>name <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"KAHRAMANMARAŞ"</span>, <span class="st">"K.MARAŞ"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>bin_kisi_basina_otomobil_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">bin_kisi_basina_otomobil_sayisi</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">result_hex</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>name <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"AFYONKARAHİSAR"</span>, <span class="st">"AFYON"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>name <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"KAHRAMANMARAŞ"</span>, <span class="st">"K.MARAŞ"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>bin_kisi_basina_otomobil_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">bin_kisi_basina_otomobil_sayisi</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">bin_kisi_basina_otomobil_sayisi</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf_text</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>label <span class="op">=</span> <span class="va">name</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">rcartocolor</span><span class="fu">::</span><span class="fu">scale_fill_carto_c</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"OrYel"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">hrbrthemes</span><span class="fu">::</span><span class="fu">theme_ipsum_rc</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       x <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Bin Kişi Başına Otomobil Sayısı"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Bin Kişi Başına Otomobil Sayısı"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-8-2.png" width="100%"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># Dorling----</span></span>
 <span><span class="co"># -------------------------------------------------------------------------- ###</span></span>
 <span><span class="co"># Read map data and transform CRS</span></span>
-<span><span class="va">tur_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu">geo_map</span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">3395</span><span class="op">)</span></span>
+<span><span class="va">tur_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="reference/geo_map.html">geo_map</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, crs <span class="op">=</span> <span class="fl">3395</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Read data and merge</span></span>
-<span><span class="va">tur_pop</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                    variable_no <span class="op">=</span> <span class="st">"ADNKS-GK137473-O29001"</span>, </span>
-<span>                    variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>                    variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                    variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="va">tur_ill</span> <span class="op">&lt;-</span> <span class="fu">geo_data</span><span class="op">(</span>variable_level <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                    variable_no <span class="op">=</span> <span class="st">"ULE-GK160887-O29502"</span>, </span>
-<span>                    variable_source <span class="op">=</span> <span class="st">"medas"</span>, </span>
-<span>                    variable_period <span class="op">=</span> <span class="st">"yillik"</span>, </span>
-<span>                    variable_recnum <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">tur_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"ADNKS-GK137473-O29001"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">tur_ill</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geo_data.html">geo_data</a></span><span class="op">(</span></span>
+<span>  variable_level <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  variable_no <span class="op">=</span> <span class="st">"ULE-GK160887-O29502"</span>,</span>
+<span>  variable_source <span class="op">=</span> <span class="st">"medas"</span>,</span>
+<span>  variable_period <span class="op">=</span> <span class="st">"yillik"</span>,</span>
+<span>  variable_recnum <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tur_dt</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">tur_pop</span>, <span class="va">tur_ill</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">tur_map</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>okuma_yazma_bilmeyen_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span>,</span>
-<span>         toplam_nufus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">toplam_nufus</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>value <span class="op">=</span> <span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">/</span><span class="va">toplam_nufus</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">tur_dt</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">tur_pop</span>, <span class="va">tur_ill</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">==</span> <span class="fl">2019</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">tur_map</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    okuma_yazma_bilmeyen_sayisi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span>,</span>
+<span>    toplam_nufus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">toplam_nufus</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>value <span class="op">=</span> <span class="fl">100</span> <span class="op">*</span> <span class="op">(</span><span class="va">okuma_yazma_bilmeyen_sayisi</span> <span class="op">/</span> <span class="va">toplam_nufus</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create dorling maps</span></span>
 <span><span class="va">tur_dorling1</span> <span class="op">&lt;-</span> <span class="fu">cartogram_dorling</span><span class="op">(</span><span class="va">tur_dt</span>, <span class="st">"okuma_yazma_bilmeyen_sayisi"</span>, <span class="fl">0.4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tur_dorling1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">tur_dorling1</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">okuma_yazma_bilmeyen_sayisi</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"B"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısı"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısı"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="100%"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tur_dorling2</span> <span class="op">&lt;-</span> <span class="fu">cartogram_dorling</span><span class="op">(</span><span class="va">tur_dt</span>, <span class="st">"toplam_nufus"</span>, <span class="fl">0.4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tur_dorling2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">tur_dorling2</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">toplam_nufus</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"B"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Nüfus"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Nüfus"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-10-1.png" width="100%"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tur_dorling3</span> <span class="op">&lt;-</span> <span class="fu">cartogram_dorling</span><span class="op">(</span><span class="va">tur_dt</span>, <span class="st">"value"</span>, <span class="fl">0.4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">tur_dorling3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">tur_dorling3</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_viridis_c</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"B"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
-<span>        legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
-<span>        plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">""</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısının Nüfusa Oranı (%)"</span>,</span>
-<span>       caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"2019 Yılında Okuma Yazma Bilmeyen Sayısının Nüfusa Oranı (%)"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Kaynak: TÜİK"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
 </div>
 </div>
@@ -574,9 +623,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
