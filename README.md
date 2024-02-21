@@ -10,6 +10,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R build
 status](https://github.com/emraher/tuik/workflows/R-CMD-check/badge.svg)](https://github.com/emraher/tuik/actions)
 [![DOI](https://zenodo.org/badge/313863336.svg)](https://zenodo.org/badge/latestdoi/313863336)
+[![R-CMD-check](https://github.com/emraher/tuik/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/emraher/tuik/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/emraher/tuik/branch/master/graph/badge.svg)](https://app.codecov.io/gh/emraher/tuik?branch=master)
 <!-- badges: end -->
 
 The goal of `tuik` is to extract data file and database URLs from
