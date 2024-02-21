@@ -8,7 +8,7 @@
 #'
 #' @param variable_period Data Series Period ("yillik" or "aylik")
 #'
-#' @param variable_recordnum Data Series Record Number (3, 5, or 24)
+#' @param variable_recnum Data Series Record Number (3, 5, or 24)
 #'
 #' @return A data tibble
 #'

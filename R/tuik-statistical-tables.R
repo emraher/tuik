@@ -31,7 +31,7 @@ statistical_tables <- function(theme) {
     dplyr::filter(X2 != "") %>%
     dplyr::mutate(X1 = stringr::str_remove_all(X1, "\\u0130statistiksel TablolarYeni\r\n[ ]+")) %>%
     dplyr::mutate(X1 = stringr::str_remove_all(X1, "\\u0130statistiksel Tablolar\r\n[ ]+")) |>
-    dplyr::mutate(X1 = stringr::str_remove_all(X1, "İstatistiksel Tablolar\n[ ]+"))
+    dplyr::mutate(X1 = stringr::str_remove_all(X1, "\\u0130statistiksel Tablolar\n[ ]+"))
 
   table_urls <- doc %>%
     rvest::html_nodes("a") %>%
