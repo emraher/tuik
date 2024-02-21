@@ -10,8 +10,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  warning = FALSE, 
-  error = FALSE, 
+  warning = FALSE,
+  error = FALSE,
   message = FALSE,
   cache = TRUE
 )
@@ -45,7 +45,7 @@ library(tuik)
 (st <- statistical_themes())
 
 # stab <- statistical_tables("aaa")
-#> Error in check_theme_id(theme) : 
+#> Error in check_theme_id(theme) :
 #>  You should select a valid theme ID!
 
 # stab <- statistical_tables(c(123, 143))
@@ -54,7 +54,7 @@ library(tuik)
 (stab <- statistical_tables("110"))
 
 # sdb <- statistical_databases("aaa")
-#> Error in check_theme_id(theme) : 
+#> Error in check_theme_id(theme) :
 #>  You should select a valid theme ID!
 
 # sdb <- statistical_databases(c(123, 143))
@@ -79,19 +79,22 @@ download.file(stab$datafile_url[1], destfile = "/tmp/file.xls")
 
 
 # Download file from URL
-filename <- paste0(janitor::make_clean_names(stab$data_name[1]),
-                   janitor::make_clean_names(stab$data_date[1]))
+filename <- paste0(
+  janitor::make_clean_names(stab$data_name[1]),
+  janitor::make_clean_names(stab$data_date[1])
+)
 
 download.file(stab$datafile_url[1],
-              destfile = paste0("/tmp/", filename, ".xls"),
-              mode = "wb")
+  destfile = paste0("/tmp/", filename, ".xls"),
+  mode = "wb"
+)
 
 
 # -------------------------------------------------------------------------- ###
 # All DB Links---- NOT WORKING AT THIS TIME. TUIK CHANGED THE PAGE
 # -------------------------------------------------------------------------- ###
 # all_dbs <- purrr::map_df(.x = st$theme_id, .f = ~statistical_databases(.x))
-# 
+#
 # all_dbs %>%
 #   dplyr::count(theme_name, name = "database_count")
 
@@ -104,17 +107,19 @@ download.file(stab$datafile_url[1],
 
 
 # Download data for a given level and variable
-dt |> 
+dt |>
   filter(var_num == "SNM-GK160951-O33303")
 
-(dt_x <- geo_data(variable_level = 3, 
-                  variable_no = "SNM-GK160951-O33303", 
-                  variable_source = "medas", 
-                  variable_period = "yillik", 
-                  variable_recnum = 5))
+(dt_x <- geo_data(
+  variable_level = 3,
+  variable_no = "SNM-GK160951-O33303",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 5
+))
 
 # (dt <- geo_data(4, "TFE-GK105747-O23001"))
-#> Error in value[[3L]](cond) : 
+#> Error in value[[3L]](cond) :
 #>  This data (TFE-GK105747-O23001) is not available at this NUTS level (level = 4)!!!
 
 # -------------------------------------------------------------------------- ###
@@ -131,104 +136,124 @@ dt |>
 
 ### NUTS-2
 ```{r}
-dt |> 
+dt |>
   filter(var_num == "HYV-GK1696800-O32507")
 
-chicken <- geo_data(variable_level = 2, 
-                    variable_no = "HYV-GK1696800-O32507", 
-                    variable_source = "medas", 
-                    variable_period = "yillik", 
-                    variable_recnum = 20) %>% 
-  dplyr::filter(date %in% c("2023", "2015")) |> 
-  mutate(yumurta_tavugu_sayisi_adet = as.numeric(yumurta_tavugu_sayisi_adet),
-         date = as.numeric(date))
+chicken <- geo_data(
+  variable_level = 2,
+  variable_no = "HYV-GK1696800-O32507",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 20
+) %>%
+  dplyr::filter(date %in% c("2023", "2015")) |>
+  mutate(
+    yumurta_tavugu_sayisi_adet = as.numeric(yumurta_tavugu_sayisi_adet),
+    date = as.numeric(date)
+  )
 
-geo_map(2) %>% 
-  left_join(chicken) %>% 
+geo_map(2) %>%
+  left_join(chicken) %>%
   ggplot() +
   geom_sf(aes(fill = yumurta_tavugu_sayisi_adet), color = "white") +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   rcartocolor::scale_fill_carto_c(palette = "Safe") +
   hrbrthemes::theme_ipsum_rc() +
   theme(legend.position = "bottom", legend.key.width = unit(3, "cm")) +
-  labs(fill = "",
-       title = "Yumurta Tavuğu (Adet)",
-       caption = "Kaynak: TÜİK") +
+  labs(
+    fill = "",
+    title = "Yumurta Tavuğu (Adet)",
+    caption = "Kaynak: TÜİK"
+  ) +
   facet_wrap(~date, ncol = 2)
 ```
 
 
 ### NUTS-3
 ```{r}
-dt |> 
+dt |>
   filter(var_num == "INS-GK055-O006")
 
-house <- geo_data(variable_level = 3, 
-                  variable_no = "INS-GK055-O006", 
-                  variable_source = "ilGostergeleri", 
-                  variable_period = "yillik", 
-                  variable_recnum = 5) %>% 
+house <- geo_data(
+  variable_level = 3,
+  variable_no = "INS-GK055-O006",
+  variable_source = "ilGostergeleri",
+  variable_period = "yillik",
+  variable_recnum = 5
+) %>%
   filter(date == 2019)
 
 # Let's select different colors
 pal <- wesanderson::wes_palette("BottleRocket2", 50, type = "continuous")
 
-geo_map(3) %>% 
-  left_join(house) %>% 
+geo_map(3) %>%
+  left_join(house) %>%
   mutate(konut_satis_sayilari_toplam = as.numeric(konut_satis_sayilari_toplam)) %>%
   ggplot() +
   geom_sf(aes(fill = konut_satis_sayilari_toplam)) +
-  coord_sf(datum = NA) + 
-  scale_fill_gradientn(colours = pal) + 
+  coord_sf(datum = NA) +
+  scale_fill_gradientn(colours = pal) +
   hrbrthemes::theme_ipsum_rc() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       title = "2019 Yılında Konut Satış Sayıları",
-       caption = "Kaynak: TÜİK")
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    title = "2019 Yılında Konut Satış Sayıları",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 
 
 ### LAU-1
 
 ```{r}
-dt |> 
+dt |>
   filter(var_num == "ULE-GK160887-O29502")
 
 pal <- c("#f7f7f7", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252", "#252525")
 
-geo_data(variable_level = 4, 
-         variable_no = "ULE-GK160887-O29502", 
-         variable_source = "medas", 
-         variable_period = "yillik", 
-         variable_recnum = 5) %>% 
-  filter(date == 2022) %>% 
-  left_join(geo_map(level = 4), .) %>% 
-  mutate(okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi)) |> 
+geo_data(
+  variable_level = 4,
+  variable_no = "ULE-GK160887-O29502",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 5
+) %>%
+  filter(date == 2022) %>%
+  left_join(geo_map(level = 4), .) %>%
+  mutate(okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi)) |>
   ggplot() +
   geom_sf(aes(fill = okuma_yazma_bilmeyen_sayisi), lwd = 0.1) +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   scale_fill_gradientn(colours = pal) +
   theme_bw() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
-       caption = "Kaynak: TÜİK")
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 
 ```{r}
-geo_data(variable_level = 4, 
-         variable_no = "ADNKS-GK137473-O29001", 
-         variable_source = "medas", 
-         variable_period = "yillik", 
-         variable_recnum = 5) |> 
-  filter(date == 2019) %>% 
-  left_join(geo_map(level = 4), .) %>% 
+geo_data(
+  variable_level = 4,
+  variable_no = "ADNKS-GK137473-O29001",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 5
+) |>
+  filter(date == 2019) %>%
+  left_join(geo_map(level = 4), .) %>%
   mutate(toplam_nufus = as.numeric(toplam_nufus)) |>
-  filter(bolgeKodu == "TR51") %>% 
+  filter(bolgeKodu == "TR51") %>%
   ggplot() +
   geom_sf(aes(fill = toplam_nufus)) +
   scale_fill_viridis_c(option = "E") +
@@ -251,17 +276,19 @@ library(tuik)
 # Read map data and transform CRS
 tur_hex_map <- st_transform(geo_map(level = 3), crs = 3395)
 
-dt |> 
+dt |>
   filter(var_num == "ULS-GK093-O009")
 
 
 # Read data and merge
-tur_hex_dt <- geo_data(variable_level = 3, 
-                       variable_no = "ULS-GK093-O009", 
-                       variable_source = "ilGostergeleri", 
-                       variable_period = "yillik", 
-                       variable_recnum = 5) %>% 
-  filter(date == 2019) %>% 
+tur_hex_dt <- geo_data(
+  variable_level = 3,
+  variable_no = "ULS-GK093-O009",
+  variable_source = "ilGostergeleri",
+  variable_period = "yillik",
+  variable_recnum = 5
+) %>%
+  filter(date == 2019) %>%
   left_join(tur_hex_map, .)
 
 # Choose one seed according to these plots
@@ -276,24 +303,28 @@ new_hex <- calculate_grid(shape = tur_hex_dt, grid_type = "hexagonal", seed = 9)
 result_hex <- assign_polygons(tur_hex_dt, new_hex)
 
 # Plot
-result_hex %>% 
-  mutate(name = stringr::str_replace(name, "AFYONKARAHİSAR", "AFYON")) %>% 
-  mutate(name = stringr::str_replace(name, "KAHRAMANMARAŞ", "K.MARAŞ")) %>% 
-  mutate(bin_kisi_basina_otomobil_sayisi = as.numeric(bin_kisi_basina_otomobil_sayisi)) |> 
+result_hex %>%
+  mutate(name = stringr::str_replace(name, "AFYONKARAHİSAR", "AFYON")) %>%
+  mutate(name = stringr::str_replace(name, "KAHRAMANMARAŞ", "K.MARAŞ")) %>%
+  mutate(bin_kisi_basina_otomobil_sayisi = as.numeric(bin_kisi_basina_otomobil_sayisi)) |>
   ggplot() +
   geom_sf(aes(fill = bin_kisi_basina_otomobil_sayisi), lwd = 0.1) +
   geom_sf_text(aes(label = name), color = "black", size = 2) +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   rcartocolor::scale_fill_carto_c(palette = "OrYel") +
   hrbrthemes::theme_ipsum_rc() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       y = "",
-       x = "",
-       title = "2019 Yılında Bin Kişi Başına Otomobil Sayısı",
-       caption = "Kaynak: TÜİK")
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    y = "",
+    x = "",
+    title = "2019 Yılında Bin Kişi Başına Otomobil Sayısı",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 
 ```{r}
@@ -304,74 +335,91 @@ result_hex %>%
 tur_map <- st_transform(geo_map(level = 4), crs = 3395)
 
 # Read data and merge
-tur_pop <- geo_data(variable_level = 4, 
-                    variable_no = "ADNKS-GK137473-O29001", 
-                    variable_source = "medas", 
-                    variable_period = "yillik", 
-                    variable_recnum = 5)
-tur_ill <- geo_data(variable_level = 4, 
-                    variable_no = "ULE-GK160887-O29502", 
-                    variable_source = "medas", 
-                    variable_period = "yillik", 
-                    variable_recnum = 5)
+tur_pop <- geo_data(
+  variable_level = 4,
+  variable_no = "ADNKS-GK137473-O29001",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 5
+)
+tur_ill <- geo_data(
+  variable_level = 4,
+  variable_no = "ULE-GK160887-O29502",
+  variable_source = "medas",
+  variable_period = "yillik",
+  variable_recnum = 5
+)
 
-tur_dt <- left_join(tur_pop, tur_ill) %>% 
-  filter(date == 2019) %>% 
-  left_join(tur_map, .) %>% 
-  mutate(okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi),
-         toplam_nufus = as.numeric(toplam_nufus)) |> 
-  mutate(value = 100*(okuma_yazma_bilmeyen_sayisi/toplam_nufus))
+tur_dt <- left_join(tur_pop, tur_ill) %>%
+  filter(date == 2019) %>%
+  left_join(tur_map, .) %>%
+  mutate(
+    okuma_yazma_bilmeyen_sayisi = as.numeric(okuma_yazma_bilmeyen_sayisi),
+    toplam_nufus = as.numeric(toplam_nufus)
+  ) |>
+  mutate(value = 100 * (okuma_yazma_bilmeyen_sayisi / toplam_nufus))
 
 # Create dorling maps
 tur_dorling1 <- cartogram_dorling(tur_dt, "okuma_yazma_bilmeyen_sayisi", 0.4)
 
-tur_dorling1 %>% 
+tur_dorling1 %>%
   ggplot() +
   geom_sf(aes(fill = okuma_yazma_bilmeyen_sayisi), lwd = 0.1) +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   scale_fill_viridis_c(option = "B") +
   theme_bw() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
-       caption = "Kaynak: TÜİK")
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    title = "2019 Yılında Okuma Yazma Bilmeyen Sayısı",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 
 ```{r}
 tur_dorling2 <- cartogram_dorling(tur_dt, "toplam_nufus", 0.4)
 
-tur_dorling2 %>% 
+tur_dorling2 %>%
   ggplot() +
   geom_sf(aes(fill = toplam_nufus), lwd = 0.1) +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   scale_fill_viridis_c(option = "B") +
   theme_bw() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       title = "2019 Yılında Nüfus",
-       caption = "Kaynak: TÜİK")
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    title = "2019 Yılında Nüfus",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 
 
 ```{r}
 tur_dorling3 <- cartogram_dorling(tur_dt, "value", 0.4)
 
-tur_dorling3 %>% 
+tur_dorling3 %>%
   ggplot() +
   geom_sf(aes(fill = value), lwd = 0.1) +
-  coord_sf(datum = NA) + 
+  coord_sf(datum = NA) +
   scale_fill_viridis_c(option = "B") +
   theme_bw() +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(3, "cm"),
-        plot.title = element_text(hjust = 0.5)) +
-  labs(fill = "",
-       title = "2019 Yılında Okuma Yazma Bilmeyen Sayısının Nüfusa Oranı (%)",
-       caption = "Kaynak: TÜİK")
-
+  theme(
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm"),
+    plot.title = element_text(hjust = 0.5)
+  ) +
+  labs(
+    fill = "",
+    title = "2019 Yılında Okuma Yazma Bilmeyen Sayısının Nüfusa Oranı (%)",
+    caption = "Kaynak: TÜİK"
+  )
 ```
 

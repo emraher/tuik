@@ -23,7 +23,6 @@ geo_data <- function(variable_no = NULL,
                      variable_source = NULL,
                      variable_period = NULL,
                      variable_recnum = NULL) {
-
   if (is.null(variable_level)) {
     variable_level <- 2
   } else {
@@ -39,38 +38,38 @@ geo_data <- function(variable_no = NULL,
 
 
   var_num <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "gostergeNo")) |>
+    purrr::map(~ purrr::pluck(.x, "gostergeNo")) |>
     unlist()
 
   var_name <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "gostergeAdi")) |>
+    purrr::map(~ purrr::pluck(.x, "gostergeAdi")) |>
     unlist()
 
   var_levels <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "duzeyler"))
+    purrr::map(~ purrr::pluck(.x, "duzeyler"))
 
   var_period <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "period")) |>
+    purrr::map(~ purrr::pluck(.x, "period")) |>
     unlist()
 
   var_source <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "kaynak")) |>
+    purrr::map(~ purrr::pluck(.x, "kaynak")) |>
     unlist()
 
   var_recordnum <- purrr::pluck(doc[2], "menu") |>
-    purrr::map(~purrr::pluck(.x, "subMenu")) |>
+    purrr::map(~ purrr::pluck(.x, "subMenu")) |>
     purrr::flatten() |>
-    purrr::map(~purrr::pluck(.x, "kayitSayisi")) |>
+    purrr::map(~ purrr::pluck(.x, "kayitSayisi")) |>
     unlist()
 
 
@@ -84,17 +83,21 @@ geo_data <- function(variable_no = NULL,
   #   purrr::map(~ stringr::str_extract_all(.x, '(?<=gostergeAdi:").*(?=")')) %>%
   #   unlist()
 
-  variable_dt <- tibble::tibble(var_name, var_num, var_levels,
-                                var_period, var_source, var_recordnum)
+  variable_dt <- tibble::tibble(
+    var_name, var_num, var_levels,
+    var_period, var_source, var_recordnum
+  )
 
   if (is.null(variable_no)) {
     return(variable_dt)
   } else {
-    query_url <- paste0("https://cip.tuik.gov.tr/Home/GetMapData?kaynak=", variable_source,
-                        "&duzey=", variable_level,
-                        "&gostergeNo=", variable_no,
-                        "&kayitSayisi=", variable_recnum,
-                        "&period=", variable_period)
+    query_url <- paste0(
+      "https://cip.tuik.gov.tr/Home/GetMapData?kaynak=", variable_source,
+      "&duzey=", variable_level,
+      "&gostergeNo=", variable_no,
+      "&kayitSayisi=", variable_recnum,
+      "&period=", variable_period
+    )
 
     # query_url <- dplyr::case_when(
     #   level == 2 ~ paste0("https://cip.tuik.gov.tr/Home/GetMapData?kaynak=medas&duzey=2&gostergeNo=", variable, "&kayitSayisi=5&period=yillik"),
@@ -123,14 +126,12 @@ geo_data <- function(variable_no = NULL,
       tidyr::unnest_wider(data = ., col = veri, names_sep = ", ") %>%
       purrr::set_names(c("code", dates)) %>%
       tidyr::pivot_longer(-code,
-                          names_to = "date",
-                          values_to = vals_name
+        names_to = "date",
+        values_to = vals_name
       ) %>%
       janitor::clean_names() %>%
       dplyr::mutate(code = as.character(code))
 
     return(res)
-
   }
-
-  }
+}
